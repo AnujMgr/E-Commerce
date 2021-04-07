@@ -2,13 +2,19 @@ import React from "react";
 import { NavBar } from "./NavBarStyle";
 import RightNavLinks from "./Components/RightNavLinks";
 import LeftNavLinks from "./Components/LeftNavLinks";
+import { CategoriesProvider } from "../../../Components/ContextApi/CategoriesProvider";
 
 const Navbar = () => {
+  console.log("i am Navbar");
+  // const { categories } = useContext(CategoriesContext);
+
   return (
     <NavBar>
-      <LeftNavLinks />
+      <CategoriesProvider>
+        <LeftNavLinks />
 
-      <RightNavLinks />
+        <RightNavLinks />
+      </CategoriesProvider>
       {/* <ListItem>
           <CartDropDown cartProducts={cartItem} />
         </ListItem>

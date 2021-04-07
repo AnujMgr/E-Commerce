@@ -1,16 +1,12 @@
 import React from "react";
-import { 
-    StyleOptionOverlay
-} from "../CardStyle";
+import { StyleOptionOverlay } from "../CardStyle";
 
-const Options = (props) => {
-
-  	return (
-    	<React.Fragment> 
-        <StyleOptionOverlay />
-    	</React.Fragment>
-  	);
+const Options = props => {
+  return (
+    <React.Fragment>
+      <StyleOptionOverlay />
+    </React.Fragment>
+  );
 };
 
 export default Options;
- 

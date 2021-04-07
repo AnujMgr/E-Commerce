@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-
 import {
   StyleCartBadge,
   StyleNavCart,
@@ -8,11 +7,11 @@ import {
   StyleNavCartImg,
   StyleCartContainer
 } from "../NavBarStyle";
-
-import { FormatNumber } from "../../../../Modules";
-import { CartContext } from "../../../../ContextApi/CartContext";
+import { FormatNumber } from "../../../Modules";
+import { CartContext } from "../../../ContextApi/CartContext";
 
 const CartDropdown = () => {
+  console.log("i am dropdown");
   const { cartItem } = useContext(CartContext);
   return (
     <React.Fragment>
@@ -24,7 +23,7 @@ const CartDropdown = () => {
                 <StyleCartBadge> {cartItem.length} </StyleCartBadge>
               )}
 
-              <StyleCartDropDown className="hoverable">
+              <StyleCartDropDown>
                 <p className="small-text center">
                   YOUR CART ({cartItem.length} ITEMS)
                 </p>
@@ -64,4 +63,4 @@ const CartDropdown = () => {
   );
 };
 
-export default CartDropdown;
+export default React.memo(CartDropdown);

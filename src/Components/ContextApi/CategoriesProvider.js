@@ -5,20 +5,24 @@ import data from "../../data";
 const CategoriesProvider = props => {
   // console.log("i am Categories Provider");
   const [categories, setCategories] = useState("");
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     setCategories(data.categories);
+    setLoading(false);
   }, [setCategories]);
 
-  if (categories) {
-    return (
-      <CategoriesContext.Provider value={{ categories }}>
-        {props.children}
-      </CategoriesContext.Provider>
-    );
-  } else {
-    return <h5>Loading...</h5>;
-  }
+  return (
+    <React.Fragment>
+      {!isLoading ? (
+        <CategoriesContext.Provider value={{ categories }}>
+          {props.children}
+        </CategoriesContext.Provider>
+      ) : (
+        <h6>Loading....</h6>
+      )}
+    </React.Fragment>
+  );
 };
 //
 // if((isStateLoaded && isCategoryLoaded && isPostLoaded) == true)

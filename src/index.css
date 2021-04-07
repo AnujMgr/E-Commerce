@@ -37,7 +37,6 @@ button {
 [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "icomoon" !important;
-  speak: none;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -127,6 +126,13 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.grid-container {
+  display: grid;
+  align-items: center;
+  grid-column-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 .bottom-border {
@@ -308,4 +314,10 @@ button {
 
 .each-fade .image-container img {
   width: 100%;
+}
+.react-slideshow-container .nav:first-of-type {
+  margin-right: -3rem;
+}
+.react-slideshow-container .nav:last-of-type {
+  margin-left: -3rem;
 }

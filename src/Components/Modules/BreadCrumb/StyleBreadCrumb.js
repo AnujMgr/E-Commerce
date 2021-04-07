@@ -21,7 +21,6 @@ const StyleBreadCrumb = styled.div`
       content: " / ";
       color: rgb(143, 136, 136);
     }
-
 `;
 
 export default StyleBreadCrumb;

@@ -1,32 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import Card from "../../Modules/Card";
-import {
-  StyleItemsContainer,
-  StyleProductHeader,
-  StyleCategoryTitle
-} from "./HomeStyle";
+import { StyleProductHeader, StyleCategoryTitle } from "./HomeStyle";
 // import CartProvider from "../../ContextApi/CartProvider";
-import ProductsProvider from "../../ContextApi/ProductsProvider";
+import { ProductsContext } from "../../ContextApi/ProductsContext";
 
-const Home = props => {
+const Home = () => {
   console.log("i am home");
+  const { products } = useContext(ProductsContext);
   return (
     <React.Fragment>
-      <StyleItemsContainer>
+      <div>
         <StyleProductHeader>
           <StyleCategoryTitle>Best Sellers</StyleCategoryTitle>
         </StyleProductHeader>
-        <ProductsProvider>
-          <Card
-          // key={product.id}
-          // onAddToCart={context.handleAddToCart}
-          // handleRating={context.handleRating}
-          // handleSingleProduct={context.handleSingleProduct}
-          // products={product}
-          />
-        </ProductsProvider>
-      </StyleItemsContainer>
+        <div className="grid-container">
+          {products.map((product) => {
+            return (
+              <Card
+                key={product.id}
+                // onAddToCart={products.handleAddToCart}
+                // handleRating={products.handleRating}
+                // handleSingleProduct={products.handleSingleProduct}
+                product={product}
+              />
+            );
+          })}
+        </div>
+      </div>
     </React.Fragment>
   );
 };

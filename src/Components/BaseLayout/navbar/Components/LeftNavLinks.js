@@ -2,11 +2,13 @@ import React, { useContext } from "react";
 import { StyleLeftNavLinks, ListItem, BrandLogo } from "../NavBarStyle";
 import Dropdown from "./dropdown";
 import Search from "./search";
-import { CategoriesContext } from "../../../../ContextApi/CategoriesContext";
+// import { CategoriesContext } from "../../../ContextApi/CategoriesContext";
+import { CategoriesContext } from "../../../ContextApi/CategoriesContext";
 
 const LeftNavLinks = () => {
-  const { categories } = useContext(CategoriesContext);
   console.log("Left Nav Links");
+  const { categories } = useContext(CategoriesContext);
+  // const { categories } = props;
   return (
     <StyleLeftNavLinks>
       <ListItem>

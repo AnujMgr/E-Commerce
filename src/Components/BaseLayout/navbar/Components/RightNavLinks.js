@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { StyleRightNavLinks, ListItem } from "../NavBarStyle";
-import CartDropDown from "../Components/CartDropDown";
+import CartDropDown from "./CartDropDown";
 
 const RightNavLinks = () => {
   console.log("Right Nav Links");

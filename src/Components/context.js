@@ -102,14 +102,12 @@ class AppProvider extends Component {
         <div className="flex-sb">
           <p className="m-6-0 small-text semi-bold">Cart Total</p>
           <p className="m-6-0 small-text semi-bold">
-            {" "}
             {FormatNumber(Number(sum).toFixed(2))}
           </p>
         </div>
         <div className="flex-sb">
           <p className="m-6-0 small-text semi-bold">Cart Discount</p>
           <p className="m-6-0 small-text black-light semi-bold">
-            {" "}
             {FormatNumber(Number(discount).toFixed(2))}
           </p>
         </div>
