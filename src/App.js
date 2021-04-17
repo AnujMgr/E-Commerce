@@ -7,8 +7,6 @@ import Wrapper from "./Components/Base/BaseStyle/Wrapper";
 import Categories from "./Components/Pages/Categories";
 import Home from "./Components/Pages/HomePage";
 import SingleProduct from "./Components/Pages/SingleProduct";
-
-import Header from "./Components/Header";
 import Cart from "./Components/Pages/Cart";
 import CartProvider from "./Components/ContextApi/CartProvider";
 import ProductsProvider from "./Components/ContextApi/ProductsProvider";
@@ -47,7 +45,6 @@ const App = () => {
         <Navbar />
         <Switch>
           <Wrapper>
-            <Route path="/" component={Header} exact />
             <Route path="/" component={HomePage} exact />
             <Route path="/cart" component={Cart} exact />
             <Route path="/categories/:slug" component={CategoryPage} exact />

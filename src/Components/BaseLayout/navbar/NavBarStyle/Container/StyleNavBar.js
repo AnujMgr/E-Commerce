@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import MenuLink from "../Typography/StyleMenuLink";
 
- const NavBar = styled.div`
+const NavBar = styled.div`
   position: fixed;
   box-sizing: border-box;
   background-color: #fff;

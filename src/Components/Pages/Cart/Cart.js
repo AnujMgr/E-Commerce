@@ -6,6 +6,7 @@ import {
   StyleCartWrapper,
   StyleCartHeader,
   StyleHeader,
+  StyleGridContainer,
 } from "./CartStyle";
 import CartItem from "./Components/CartItem";
 import { CartContext } from "../../ContextApi/CartContext";
@@ -14,9 +15,9 @@ const Cart = () => {
   console.log("I am Cart");
   const { cartItem, handleRemoveCart } = useContext(CartContext);
   return (
-    <React.Fragment>
+    <div className="wrap">
       {cartItem.length !== 0 ? (
-        <div className="flex-sb w-90 m-auto">
+        <StyleGridContainer>
           <StyleCartWrapper>
             <StyleCartHeader> YOUR CART </StyleCartHeader>
             <StyleDescription>
@@ -39,18 +40,17 @@ const Cart = () => {
               );
             })}
           </StyleCartWrapper>
-
           <StyleOrderSummary>
             <StyleCartHeader>ORDER SUMMARY </StyleCartHeader>
             <StyleDescription>Price Details</StyleDescription>
             {/* {context.handleOrderSummary()} */}
             <StyleCheckOutBtn className="hoverable"> Checkout</StyleCheckOutBtn>
           </StyleOrderSummary>
-        </div>
+        </StyleGridContainer>
       ) : (
         <h2 className="center m-5-0">You Cart is Empty</h2>
       )}
-    </React.Fragment>
+    </div>
   );
 };
 

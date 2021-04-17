@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyleCartWrapper = styled.div`
-	width: 70%;
+  grid-area: items;
 `;
 
 export default StyleCartWrapper;

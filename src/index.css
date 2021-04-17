@@ -127,12 +127,16 @@ button {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+.react-slideshow-fade-wrapper {
+  margin: auto;
+}
 
 .grid-container {
   display: grid;
   align-items: center;
   grid-column-gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  width: 100%;
 }
 
 .bottom-border {
@@ -171,6 +175,13 @@ button {
 
 .hoverable:hover {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.wrap {
+  max-width: 1300px;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .w-90 {

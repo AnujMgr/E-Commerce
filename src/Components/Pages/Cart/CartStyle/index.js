@@ -16,10 +16,10 @@ import StyleCounter from "./Container/StyleCounter";
 import StylePriceContainer from "./Container/StylePriceContainer";
 import StyleHeader from "./Container/StyleHeader";
 import StyleOrderSummary from "./Container/StyleOrderSummary";
-
+import StyleGridContainer from "./Container/StyleGridContainer";
 
 export {
-  StyleCartHeader, 
+  StyleCartHeader,
   StyleCartItem,
   StyleDescription,
   StyleCartWrapper,
@@ -33,5 +33,6 @@ export {
   StyleHeader,
   StyleCartPrice,
   StyleOrderSummary,
-  StyleCheckOutBtn
+  StyleCheckOutBtn,
+  StyleGridContainer,
 };

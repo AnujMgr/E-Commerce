@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 const StyleOrderSummary = styled.div`
-    width: 25%;
-    height: 100%;
-    position: fixed;
-    right: 6%;
+  width: 100%;
+  height: 100%;
+  right: 1em;
+  grid-area: summary;
 `;
 
 export default StyleOrderSummary;

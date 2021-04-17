@@ -10,7 +10,7 @@ import {
   StyleImgContainer,
   StyleOldPrice,
   StyleNewPrice,
-  StyleBtn
+  StyleBtn,
 } from "./SingleProductStyle";
 import {
   Counter,
@@ -19,13 +19,13 @@ import {
   ColorOption,
   SizeOption,
   FormatNumber,
-  Toast
+  Toast,
 } from "../../Modules";
 
 import { ProductsContext } from "../../ContextApi/ProductsContext";
 import { CartContext } from "../../ContextApi/CartContext";
 
-const SingleProduct = props => {
+const SingleProduct = (props) => {
   const { products } = useContext(ProductsContext);
   const { handleAddToCart } = useContext(CartContext);
 
@@ -39,35 +39,35 @@ const SingleProduct = props => {
   const [isSize, setIsSize] = useState(null);
   const [isColor, setIsColor] = useState(null);
 
-  const handleSizeOptions = size => {
+  const handleSizeOptions = (size) => {
     setSize(size);
   };
 
-  const handleColorOptions = color => {
+  const handleColorOptions = (color) => {
     setColor(color);
   };
   //Validates if the Option is Checked
-  const validateSizeSelection = remark => {
+  const validateSizeSelection = (remark) => {
     setValidSize(remark);
   };
 
   //Validates if the Option is Checked
-  const validateColorSelection = remark => {
+  const validateColorSelection = (remark) => {
     setValidColor(remark);
   };
   //Check Size option exist or not
-  const handleIsSize = bool => {
+  const handleIsSize = (bool) => {
     setIsSize(bool);
   };
 
   //Check Color option exist or not
-  const handleIsColor = bool => {
+  const handleIsColor = (bool) => {
     setIsColor(bool);
   };
 
   useEffect(() => {
     const { productSlug } = props;
-    setProduct(...products.filter(product => product.slug === productSlug));
+    setProduct(...products.filter((product) => product.slug === productSlug));
     setLoading(false);
   }, [products, props]);
 
@@ -145,19 +145,19 @@ const SingleProduct = props => {
                 )}
               </div>
 
-              <SizeOption
+              {/* <SizeOption
                 product={product}
                 handleSizeOptions={handleSizeOptions}
                 validateSizeSelection={validateSizeSelection}
                 handleIsSize={handleIsSize}
-              />
+              /> */}
 
-              <ColorOption
+              {/* <ColorOption
                 product={product}
                 handleColorOptions={handleColorOptions}
                 validateColorSelection={validateColorSelection}
                 handleIsColor={handleIsColor}
-              />
+              /> */}
 
               {validateColor === "notselected" ||
               validateSize === "notselected" ? (

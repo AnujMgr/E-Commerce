@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../../../styles/mediaQuery";
 
 const StyleLeftNavLinks = styled.ul`
   display: flex;
@@ -8,6 +9,12 @@ const StyleLeftNavLinks = styled.ul`
   align-items: center;
   width: 85%;
   margin-left: 3%;
+
+  @media ${device.tablet} {
+    @media ${device.tablet} {
+      display: none;
+    }
+  }
 `;
 
 export default StyleLeftNavLinks;

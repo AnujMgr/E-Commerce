@@ -4,13 +4,15 @@ import Card from "../../Modules/Card";
 import { StyleProductHeader, StyleCategoryTitle } from "./HomeStyle";
 // import CartProvider from "../../ContextApi/CartProvider";
 import { ProductsContext } from "../../ContextApi/ProductsContext";
+import Header from "../../Header";
 
 const Home = () => {
   console.log("i am home");
   const { products } = useContext(ProductsContext);
   return (
     <React.Fragment>
-      <div>
+      <div className="wrap">
+        <Header />
         <StyleProductHeader>
           <StyleCategoryTitle>Best Sellers</StyleCategoryTitle>
         </StyleProductHeader>
