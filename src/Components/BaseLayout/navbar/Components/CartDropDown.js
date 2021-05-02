@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import {
-  StyleCartBadge,
+  StyleCartCount,
   StyleNavCart,
   StyleCartDropDown,
   StyleNavCartImg,
-  StyleCartContainer
+  StyleCartContainer,
 } from "../NavBarStyle";
 import { FormatNumber } from "../../../Modules";
 import { CartContext } from "../../../ContextApi/CartContext";
+import { BsBag } from "react-icons/bs";
 
 const CartDropdown = () => {
   console.log("i am dropdown");
@@ -18,11 +19,11 @@ const CartDropdown = () => {
       {cartItem ? (
         <StyleNavCart>
           <Link to="/cart">
-            <span className="icon-add_shopping_cart large-font p-15">
+            <div style={{ marginRight: "0.5em" }}>
+              <BsBag className="large-font" />
               {cartItem.length === 0 ? null : (
-                <StyleCartBadge> {cartItem.length} </StyleCartBadge>
+                <StyleCartCount> {cartItem.length} </StyleCartCount>
               )}
-
               <StyleCartDropDown>
                 <p className="small-text center">
                   YOUR CART ({cartItem.length} ITEMS)
@@ -51,7 +52,7 @@ const CartDropdown = () => {
               </div>
               ) */}
               </StyleCartDropDown>
-            </span>
+            </div>
           </Link>
         </StyleNavCart>
       ) : (

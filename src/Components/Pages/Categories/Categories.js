@@ -50,15 +50,15 @@ const Categories = (props) => {
             <Link to={"/Categories/" + categorySlug}>Electronics</Link>
           </BreadCrumb>
 
-          <div className="flex-sb-wrap">
-            <StyleFilterContainer>
+          <div className="row">
+            <StyleFilterContainer className="col-12 col-md-2">
               <div className="bottom-border">
                 <h5 className="medium-text m-6-0 weight-300">FILTERS</h5>
               </div>
 
               <StyleFilterTitle> BRAND </StyleFilterTitle>
 
-              <div className="bottom-border p-b-10">
+              <div className="border-bottom p-b-10">
                 {brands.map((brand) => (
                   <div key={brand.id}>
                     <Checkbox name={brand.name} brandId={brand.id} />
@@ -67,7 +67,7 @@ const Categories = (props) => {
                   </div>
                 ))}
               </div>
-              <div className="bottom-border p-b-10">
+              <div className="border-bottom p-b-10">
                 <StyleFilterTitle>PRICE</StyleFilterTitle>
                 <div className="flex">
                   <StyleInputFilter placeholder="min" /> -
@@ -77,8 +77,8 @@ const Categories = (props) => {
               </div>
             </StyleFilterContainer>
 
-            <StyleItemsContainer>
-              <div className="flex-sb-wrap bottom-border">
+            <StyleItemsContainer className="col-12 col-md-10">
+              <div className="d-flex justify-content-between bottom-border">
                 <div>
                   <StyleCategoryTitle>SmartPhones / Mobiles</StyleCategoryTitle>
                   <p className="black-light small-text">

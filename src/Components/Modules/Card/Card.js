@@ -27,7 +27,7 @@ const Card = (props) => {
 
   return (
     <React.Fragment>
-      <StyledCard width={100} key={product.id}>
+      <StyledCard key={product.id}>
         {/* Discount Ribbon */}
         {Number(product.discount) === 0 || null ? null : (
           <StyleRibbon>
@@ -81,4 +81,5 @@ const Card = (props) => {
     </React.Fragment>
   );
 };
+
 export default React.memo(Card);

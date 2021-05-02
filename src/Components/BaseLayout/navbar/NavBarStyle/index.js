@@ -17,7 +17,7 @@ import StyleRightNavLinks from "./Typography/StyleRightNavLinks";
 import SubCategoryList from "./Typography/StyleSubCategoryList";
 import ListItem from "./Typography/StyleListItem";
 import BrandLogo from "./Typography/StyleBrandLogo";
-import StyleCartBadge from "./Typography/StyleCartBadge";
+import StyleCartCount from "./Typography/StyleCartCount";
 
 export {
   DropdownMenu,
@@ -33,9 +33,9 @@ export {
   ListItem,
   BrandLogo,
   Overlay,
-  StyleCartBadge,
+  StyleCartCount,
   StyleNavCart,
   StyleCartDropDown,
   StyleNavCartImg,
-  StyleCartContainer
+  StyleCartContainer,
 };

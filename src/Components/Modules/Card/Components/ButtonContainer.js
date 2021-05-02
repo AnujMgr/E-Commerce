@@ -1,21 +1,24 @@
 import React, { useContext } from "react";
 import { StyleBtnContainer, StyleCardBtn } from "../CardStyle";
-import { CartContext } from "../../../ContextApi/CartContext";
+// import { CartContext } from "../../../ContextApi/CartContext";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { addToCart } from "../../../../redux/cart/cart-actions";
+// import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-const ButtonContainer = props => {
-  const { handleAddToCart } = useContext(CartContext);
-  const { product, setVisibility } = props;
+const ButtonContainer = ({ product, setVisibility }) => {
+  const dispatch = useDispatch();
   return (
     <StyleBtnContainer>
-      {product.size ? (
+      {/* {product.size ? (
         <StyleCardBtn onClick={() => setVisibility("visible")}>
-          <span className="icon-add_shopping_cart"></span>
+          <AiOutlineShoppingCart className="large-font" />
         </StyleCardBtn>
-      ) : (
-        <StyleCardBtn onClick={() => handleAddToCart(product)}>
-          <span className="icon-add_shopping_cart"></span>
-        </StyleCardBtn>
-      )}
+      ) : ( */}
+      <StyleCardBtn onClick={() => dispatch(addToCart(product.id))}>
+        <AiOutlineShoppingCart className="large-font" />
+      </StyleCardBtn>
+      {/* )} */}
 
       <StyleCardBtn to="./index">
         <span className="icon-favorite_outline"></span>
@@ -27,4 +30,11 @@ const ButtonContainer = props => {
   );
 };
 
-export default React.memo(ButtonContainer);
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     addToCart: (id) => dispatch(addToCart(id)),
+//   };
+// };
+
+// export default connect(null, mapDispatchToProps)(ButtonContainer);
+export default ButtonContainer;

@@ -16,7 +16,7 @@ const LeftNavLinks = () => {
       </ListItem>
 
       <React.Fragment>
-        {categories.map(category => (
+        {categories.map((category) => (
           <ListItem key={category.id}>
             <Dropdown category={category} key={category.id} />
           </ListItem>

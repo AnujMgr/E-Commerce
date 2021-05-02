@@ -72,13 +72,13 @@ const SingleProduct = (props) => {
   }, [products, props]);
 
   return (
-    <div className="w-94 m-auto">
+    <div className="wrap mx-auto">
       {!isLoading ? (
         <React.Fragment>
-          <div className="flex-sb m-auto">
-            <StyleImgContainer>
+          <div className="row">
+            <StyleImgContainer className="col-12 col-md-5">
               <img className="img-fluid" src={product.image} alt="watch" />
-              <div className="flex-sb">
+              <div className="d-flex justify-content-center">
                 <img
                   className="img-thumb"
                   src="/images/watch-2.png"
@@ -102,7 +102,7 @@ const SingleProduct = (props) => {
               </div>
             </StyleImgContainer>
 
-            <StyleDetailsContainer>
+            <StyleDetailsContainer className="col-12 col-md-7">
               <BreadCrumb>
                 <Link to="/">Home</Link>
                 <Link to={"/categories/" + product.category}>
@@ -127,7 +127,7 @@ const SingleProduct = (props) => {
                 your loved ones and special people in valentine.
               </p>
 
-              <div className="flex bottom-border">
+              <div className="d-flex align-items-center border-bottom">
                 {Number(product.discount) === null ||
                 Number(product.discount) === 0 ? (
                   <StyleNewPrice> {FormatNumber(product.price)} </StyleNewPrice>
@@ -164,17 +164,20 @@ const SingleProduct = (props) => {
                 <Toast message=" Please, select the Options!!! " />
               ) : null}
 
-              <div className="flex m-5-0">
-                <p className="m-r-5 black-light weight-300"> QUANTITY:</p>
+              <div className="d-flex my-3">
+                <p className="mr-3 black-light font-weight-normal">
+                  {" "}
+                  QUANTITY:
+                </p>
 
                 <Counter id={product.id} noOfOrder={product.noOfOrder} />
               </div>
 
-              <div className="flex-sb w-60 m-6-0">
+              <div className="d-flex mt-3">
                 {isSize && isColor ? (
                   <StyleBtn
                     primary
-                    className="hoverable weight-300"
+                    className="hoverable font-weight-normal mr-3"
                     onClick={() => {
                       validateSize === "valid" && validateColor === "valid"
                         ? handleAddToCart(product, size, color)
@@ -188,7 +191,7 @@ const SingleProduct = (props) => {
                 {isSize && !isColor ? (
                   <StyleBtn
                     primary
-                    className="hoverable weight-300"
+                    className="hoverable font-weight-normal"
                     onClick={() => {
                       validateSize === "valid"
                         ? handleAddToCart(product, size, color)
@@ -202,7 +205,7 @@ const SingleProduct = (props) => {
                 {!isSize && isColor ? (
                   <StyleBtn
                     primary
-                    className="hoverable weight-300"
+                    className="hoverable font-weight-normal mr-3"
                     onClick={() => {
                       validateColor === "valid"
                         ? handleAddToCart(product, size, color)
@@ -216,22 +219,24 @@ const SingleProduct = (props) => {
                 {!isSize && !isColor ? (
                   <StyleBtn
                     primary
-                    className="hoverable weight-300"
+                    className="hoverable font-weight-normal mr-3"
                     onClick={() => handleAddToCart(product, size, color)}
                   >
                     Add to Cart
                   </StyleBtn>
                 ) : null}
 
-                <StyleBtn className="hoverable weight-300">Buy It Now</StyleBtn>
+                <StyleBtn className="hoverable font-weight-normal">
+                  Buy It Now
+                </StyleBtn>
                 <span className="icon-favorite_outline icon-font"></span>
               </div>
             </StyleDetailsContainer>
           </div>
 
           <StyleDescriptionContainer>
-            <h4 className="weight-300">Description</h4>
-            <p className="small-text black-light weight-300 ">
+            <h2 className="font-weight-normal">Description</h2>
+            <p className="small-text black-light font-weight-normal">
               Shilajit is a sticky tar-like resinous exudate pressed out from
               the layers of rock on cliffs of Himalayan mountains at an altitude
               above 3000m. It is a decomposition of plant materials that is high
@@ -258,17 +263,17 @@ const SingleProduct = (props) => {
           <StyleReviewContainer>
             <h4>Ratings & Reviews of {product.title}</h4>
 
-            <div className="flex-sb">
+            <div className="d-flex justify-content-between">
               <p> Product Reviews </p>
               <p> Sort: </p>
             </div>
 
-            <StyleProductRating className="weight-100 m-6-0">
+            <StyleProductRating className="font-weight-normal">
               4.4
             </StyleProductRating>
             <CreateStar star={3} />
 
-            <div className="flex-sb">
+            <div className="d-flex justify-content-between">
               <p>author</p>
               <p>Comment</p>
             </div>

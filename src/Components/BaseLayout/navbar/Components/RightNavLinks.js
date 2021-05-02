@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { StyleRightNavLinks, ListItem } from "../NavBarStyle";
 import CartDropDown from "./CartDropDown";
+import { BsHeart } from "react-icons/bs";
 
 const RightNavLinks = () => {
   console.log("Right Nav Links");
@@ -13,7 +14,7 @@ const RightNavLinks = () => {
       </ListItem>
       <ListItem>
         <Link to="/cart">
-          <span className="icon-favorite_outline large-font"></span>
+          <BsHeart className="large-font" />
         </Link>
         {/* <Link to="/cart">
               <StyleCartBadge className="icon-favorite_outline large-font"></StyleCartBadge>
