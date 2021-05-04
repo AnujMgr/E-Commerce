@@ -1,4 +1,3 @@
-import StyleBreadCrumb from "./StyleBreadCrumb";
+import BreadCrumb from "./BreadCrumb";
 
-export default StyleBreadCrumb;
- 
+export default BreadCrumb;

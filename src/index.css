@@ -1,5 +1,6 @@
 body {
-  font-family: "Segoe UI", "Roboto";
+  font-family: muli, sans-serif;
+  margin: 0;
 }
 a {
   color: black;
@@ -7,7 +8,7 @@ a {
 }
 
 p {
-  font-family: "Roboto";
+  font-family: muli, sans-serif;
 }
 
 h6,
@@ -17,7 +18,7 @@ h3,
 h2,
 h1,
 button {
-  font-family: "Roboto";
+  font-family: muli, sans-serif;
   font-weight: 500;
 }
 
@@ -53,14 +54,6 @@ button {
 
 .react-slideshow-fade-wrapper {
   margin: auto;
-}
-
-.grid-container {
-  display: grid;
-  align-items: center;
-  grid-column-gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  width: 100%;
 }
 
 .border-tb {

@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
 import { Card, BreadCrumb, Checkbox, SortOption } from "../../Modules";
 import {
@@ -45,10 +44,7 @@ const Categories = (props) => {
     <React.Fragment>
       {!isLoading ? (
         <React.Fragment>
-          <BreadCrumb>
-            <Link to="/">Home</Link>
-            <Link to={"/Categories/" + categorySlug}>Electronics</Link>
-          </BreadCrumb>
+          <BreadCrumb category={product.category} />
 
           <div className="row">
             <StyleFilterContainer className="col-12 col-md-2">
@@ -77,7 +73,7 @@ const Categories = (props) => {
               </div>
             </StyleFilterContainer>
 
-            <StyleItemsContainer className="col-12 col-md-10">
+            <div className="col-12 col-md-10">
               <div className="d-flex justify-content-between bottom-border">
                 <div>
                   <StyleCategoryTitle>SmartPhones / Mobiles</StyleCategoryTitle>
@@ -93,7 +89,7 @@ const Categories = (props) => {
                   <Card key={prod.id} product={prod} width="100" />
                 ))}
               </div>
-            </StyleItemsContainer>
+            </div>
           </div>
         </React.Fragment>
       ) : (

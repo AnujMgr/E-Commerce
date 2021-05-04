@@ -1,6 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
-import { Link } from "react-router-dom";
-import { BreadCrumb } from "../Categories/CategoryStyle";
+import BreadCrumb from "../../Modules/BreadCrumb";
 import {
   StyleDescriptionContainer,
   StyleDetailsContainer,
@@ -11,7 +10,7 @@ import {
   StyleOldPrice,
   StyleNewPrice,
   StyleBtn,
-} from "./SingleProductStyle";
+} from "./StyleSingleProduct";
 import {
   Counter,
   StarRating,
@@ -103,13 +102,14 @@ const SingleProduct = (props) => {
             </StyleImgContainer>
 
             <StyleDetailsContainer className="col-12 col-md-7">
-              <BreadCrumb>
+              <BreadCrumb category={product.category} />
+              {/* <BreadCrumb>
                 <Link to="/">Home</Link>
                 <Link to={"/categories/" + product.category}>
                   {product.category}
                 </Link>
                 <Link to="./Categories">Phones</Link>
-              </BreadCrumb>
+              </BreadCrumb> */}
               <StyleProductTitle> {product.title} </StyleProductTitle>
 
               <p className="black-light">{product.brand}</p>
@@ -141,7 +141,7 @@ const SingleProduct = (props) => {
 
                 {Number(product.discount) === null ||
                 Number(product.discount) === 0 ? null : (
-                  <StyleOldPrice>{FormatNumber(product.price)}</StyleOldPrice>
+                  <span>{FormatNumber(product.price)}</span>
                 )}
               </div>
 

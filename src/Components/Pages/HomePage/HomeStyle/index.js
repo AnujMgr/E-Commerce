@@ -1,9 +1,7 @@
-import StyleItemsContainer from ".//StyleItemsContainer";
-import StyleProductHeader from "./StyleProductHeader";
-import StyleCategoryTitle from "./StyleCategoryTitle";
+import {
+  StyleItemsContainer,
+  StyleCategoryHeader,
+  StyleCategoryTitle,
+} from "./HomeStyle";
 
-export { 
-	StyleItemsContainer,
-	StyleProductHeader,
-	StyleCategoryTitle 
-};
+export { StyleItemsContainer, StyleCategoryHeader, StyleCategoryTitle };

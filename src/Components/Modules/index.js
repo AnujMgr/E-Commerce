@@ -20,5 +20,5 @@ export {
   ColorOption,
   SizeOption,
   FormatNumber,
-  Toast
+  Toast,
 };
