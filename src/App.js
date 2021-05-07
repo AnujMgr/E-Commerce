@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Wrapper from "./Components/Base/BaseStyle/Wrapper";
@@ -12,33 +12,39 @@ import CartProvider from "./Components/ContextApi/CartProvider";
 import ProductsProvider from "./Components/ContextApi/ProductsProvider";
 import { Navbar } from "./Components/BaseLayout";
 import "./index.css";
+import { useDispatch } from "react-redux";
+import Api from "./helper/api";
+import {
+  requestFailed,
+  requestFinished,
+  requestStarted,
+} from "./redux/RequestHandler/request-actions";
+import RequestsEnum from "./redux/RequestHandler/request-list";
+import { setCategories } from "./redux/categories/categories-actions";
 
 const App = () => {
-  // const ProductPage = ({ match }) => {
-  //   return (
-  //     <ProductsProvider>
-  //       <SingleProduct productSlug={match.params.slug} />
-  //     </ProductsProvider>
-  //   );
-  // };
-  // const CategoryPage = ({ match }) => {
-  //   return (
-  //     <ProductsProvider>
-  //       <Categories categorySlug={match.params.slug} />
-  //     </ProductsProvider>
-  //   );
-  // };
-  // const HomePage = ({ match }) => {
-  //   return (
-  //     <ProductsProvider>
-  //       <Home />
-  //     </ProductsProvider>
-  //   );
-  // };
+  const api = new Api();
+  const dispatch = useDispatch();
+  const requestName = RequestsEnum.getCategories;
 
-  // const CartPage = cart => {
-  //   return <Cart cart={cart} />;
-  // };
+  useEffect(() => {
+    const fetchCategories = () => {
+      console.log("I am fetching Categories");
+      dispatch(requestStarted(requestName));
+
+      api
+        .getCategories()
+        .then((response) => {
+          dispatch(setCategories(response.data));
+          dispatch(requestFinished(requestName));
+        })
+        .catch(function (error) {
+          console.log(error);
+          dispatch(requestFailed(requestName));
+        });
+    };
+    fetchCategories();
+  }, []);
   return (
     <BrowserRouter>
       <CartProvider>

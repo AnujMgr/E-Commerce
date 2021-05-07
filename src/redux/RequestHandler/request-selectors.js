@@ -1,5 +1,6 @@
 //get request part of the state
-const requestState = (state) => state.request;
+//just a constant for reuse
+const requestState = (state) => state;
 
 export const requestsInProgress = (state) =>
   requestState(state).requests.filter((request) => request.inProgress).length >
@@ -10,11 +11,10 @@ export const namedRequestsInProgress = (
   state,
   requestName // RequestsEnum | RequestsEnum[]
 ) => {
-  console.log(requestName);
-
   const singleNamedRequestInProgress = (singleRequestName) =>
     requestState(state).requests.find(
-      (request) => request.name === singleRequestName && request.inProgress
+      (request) =>
+        request.requestName === singleRequestName && request.inProgress
     ) !== undefined;
 
   if (Array.isArray(requestName)) {

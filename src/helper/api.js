@@ -19,8 +19,8 @@ export default class Api {
     return this.client;
   };
 
-  getCategories = (params) => {
-    return this.init().get("/categories/list", { params: params });
+  getCategories = () => {
+    return this.init().get("/categories/list");
   };
 
   addNewUser = (data) => {

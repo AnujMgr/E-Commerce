@@ -13,16 +13,19 @@ import { Link } from "react-router-dom";
 import { BsHeart } from "react-icons/bs";
 import Search from "../Search/Search";
 import { useSelector } from "react-redux";
+import { namedRequestsInProgress } from "../../../../redux/RequestHandler/request-selectors";
+import RequestsEnum from "../../../../redux/RequestHandler/request-list";
 
 const Navbar = () => {
-  // const toggleActiveMenu = () => {
-  //   setActiveMenu(activeMenu === "men" ? "women" : "men");
-  // };
   const [activeMenu, setActiveMenu] = useState("men");
-
+  const requestState = useSelector((state) => state.requests);
   const categories = useSelector((state) => state.categories);
-  console.log(categories);
-  return false ? (
+  const loading = namedRequestsInProgress(
+    requestState,
+    RequestsEnum.getCategories
+  );
+
+  return (
     <>
       <StyleWrapper bgColor="#2e2e2e">
         <NavBar>
@@ -32,9 +35,9 @@ const Navbar = () => {
                 <img src="/logo192.png" alt="Logo" />
               </BrandLogo>
             </ListItem>
-            {categories !== undefined ? (
+            {!loading ? (
               <React.Fragment>
-                {categories.map((category) => (
+                {categories.categories.navigation.map((category) => (
                   <ListItem
                     key={category.id}
                     onClick={() =>
@@ -47,7 +50,6 @@ const Navbar = () => {
                     }
                   >
                     {category.content.title}
-                    {/* <Dropdown category={category} key={category.id} /> */}
                   </ListItem>
                 ))}
               </React.Fragment>
@@ -74,24 +76,30 @@ const Navbar = () => {
           </StyleRightNavLinks>
         </NavBar>
       </StyleWrapper>
-      {/* <StyleWrapper bgColor="#5f5c5cf7">
-        {activeMenu === "men" ? (
-          <SecondNavBar>
-            {categories[0].children[4].children.map((category) => {
-              return <p>{category.content.title}</p>;
-            })}
-          </SecondNavBar>
-        ) : (
-          <SecondNavBar>
-            {categories[1].children[4].children.map((category) => {
-              return <p>{category.content.title}</p>;
-            })}
-          </SecondNavBar>
-        )}
-      </StyleWrapper> */}
+      {!loading ? (
+        <StyleWrapper bgColor="#5f5c5cf7">
+          {activeMenu === "men" ? (
+            <SecondNavBar>
+              {categories.categories.navigation[
+                activeMenu === "men" ? 0 : 1
+              ].children[4].children.map((category) => {
+                return <p key={category.id}>{category.content.title}</p>;
+              })}
+            </SecondNavBar>
+          ) : (
+            <SecondNavBar>
+              {categories.categories.navigation[
+                activeMenu === "men" ? 0 : 1
+              ].children[4].children.map((category) => {
+                return <p key={category.id}>{category.content.title}</p>;
+              })}
+            </SecondNavBar>
+          )}
+        </StyleWrapper>
+      ) : (
+        <p>Loading...</p>
+      )}
     </>
-  ) : (
-    <></>
   );
 };
 
