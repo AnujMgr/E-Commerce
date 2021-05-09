@@ -1,25 +1,24 @@
-import Card from "../../../Modules/Card";
-import { StyleCategoryTitle } from "../../Categories/CategoryStyle";
-import { GridContainer, Wrapper } from "../HomeStyle/HomeStyle";
+import {
+  FeatureCard,
+  FluidImage,
+  GridContainer,
+  Wrapper,
+} from "../HomeStyle/HomeStyle";
 
-function CategoryProductsList({ category, products }) {
+function CategoryProductsList({ categories }) {
   // console.log(fetchProducts);
   return (
     <Wrapper>
-      <br />
-
-      <GridContainer>
-        {/* {products.map((product) => {
-        return (
-          <Card
-            key={1}
-            // onAddToCart={products.handleAddToCart}
-            // handleRating={products.handleRating}
-            // handleSingleProduct={products.handleSingleProduct}
-            product={product}
-          />
-        );
-      })} */}
+      <GridContainer gap="0.5em">
+        {categories.map((category) => {
+          return (
+            <FeatureCard>
+              <FluidImage src={category.image} />
+              <h1>{category.name}</h1>
+              <p>Summer is Comming</p>
+            </FeatureCard>
+          );
+        })}
       </GridContainer>
     </Wrapper>
   );

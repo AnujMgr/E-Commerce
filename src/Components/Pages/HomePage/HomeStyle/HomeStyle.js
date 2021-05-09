@@ -32,7 +32,7 @@ export const Wrapper = styled.div`
 export const GridContainer = styled.div`
   display: grid;
   align-items: center;
-  grid-column-gap: 1em;
+  grid-column-gap: ${(props) => (props.gap ? props.gap : "1em")};
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   width: 100%;
 `;

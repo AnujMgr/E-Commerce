@@ -1,45 +1,53 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
-import { Card, BreadCrumb, Checkbox, SortOption } from "../../Modules";
+import { Card, BreadCrumb, SortOption } from "../../Modules";
 import {
   StyleFilterContainer,
-  StyleItemsContainer,
   StyleFilterTitle,
   StyleCategoryTitle,
   StyleInputFilter,
 } from "./CategoryStyle";
+import { setCatProducts } from "../../../redux/products/products-actions";
+import { useParams } from "react-router";
+import axios from "axios";
+import Api from "../../../helper/api";
+import { useDispatch } from "react-redux";
+import {
+  requestFailed,
+  requestFinished,
+  requestStarted,
+} from "../../../redux/RequestHandler/request-actions";
+import RequestsEnum from "../../../redux/RequestHandler/request-list";
 
-// import { AppConsumer } from "../../context";
-import { ProductsContext } from "../../ContextApi/ProductsContext";
-
-const Categories = (props) => {
-  const { products } = useContext(ProductsContext);
+const Categories = () => {
+  // const { products } = useContext(ProductsContext);
   const [product, setProduct] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const { slug } = useParams();
+  const api = new Api();
+  const dispatch = useDispatch();
+  const page = 1;
+  const limit = 8;
 
-  const brands = [];
-  const map = new Map();
+  const requestName = RequestsEnum.getCatProducts;
 
-  const { categorySlug } = props;
   useEffect(() => {
-    setProduct([
-      ...products.filter((product) => product.category === categorySlug),
-    ]);
-    setLoading(false);
-  }, [products, categorySlug]);
+    const fetchCategoriesById = async (slug, page, limit) => {
+      dispatch(requestStarted(requestName));
+      api
+        .getProductByCategory(slug, page, limit)
+        .then((response) => {
+          dispatch(setCatProducts(response.data));
+          dispatch(requestFinished(requestName));
+        })
+        .catch(function (error) {
+          console.log(error);
+          dispatch(requestFailed(requestName));
+        });
+    };
+    fetchCategoriesById(slug, page, limit);
+  }, []);
 
-  for (const item of products) {
-    if (!map.has(item.brand)) {
-      map.set(item.brand, true); // set any value to Map
-      brands.push({
-        id: item.id,
-        name: item.brand,
-        star: item.star,
-        price: item.price,
-      });
-    }
-  }
-  console.log(product);
   return (
     <React.Fragment>
       {!isLoading ? (
@@ -54,15 +62,7 @@ const Categories = (props) => {
 
               <StyleFilterTitle> BRAND </StyleFilterTitle>
 
-              <div className="border-bottom p-b-10">
-                {brands.map((brand) => (
-                  <div key={brand.id}>
-                    <Checkbox name={brand.name} brandId={brand.id} />
-                    <span className="small-text black-light">{brand.name}</span>
-                    <br />
-                  </div>
-                ))}
-              </div>
+              <div className="border-bottom p-b-10"></div>
               <div className="border-bottom p-b-10">
                 <StyleFilterTitle>PRICE</StyleFilterTitle>
                 <div className="flex">

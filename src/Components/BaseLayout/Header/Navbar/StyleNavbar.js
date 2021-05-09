@@ -30,7 +30,6 @@ export const StyleLeftNavLinks = styled.ul`
   padding-left: 0;
   list-style: none;
   align-items: center;
-  flex: 10;
   margin: 0;
   li {
     flex: 1;

@@ -1,15 +1,12 @@
 import { ActionTypes } from "./request-types";
 
-export const requestStarted = (requestName) => (
-  console.log("I am requestStarted"),
-  {
-    type: ActionTypes.REQUEST_STARTED,
-    request: {
-      requestName,
-      inProgress: true,
-    },
-  }
-);
+export const requestStarted = (requestName) => ({
+  type: ActionTypes.REQUEST_STARTED,
+  request: {
+    requestName,
+    inProgress: true,
+  },
+});
 
 export const requestFinished = (requestName) => ({
   type: ActionTypes.REQUEST_FINISHED,
