@@ -19,8 +19,10 @@ export const NavBar = styled.div`
 
 export const SecondNavBar = styled(NavBar)`
   height: 3em;
-  p {
+  a {
     color: #fff;
+    display: inline-flex;
+    align-items: center;
   }
 `;
 

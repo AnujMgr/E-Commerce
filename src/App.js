@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Categories from "./Components/Pages/Categories";
-import Home from "./Components/Pages/HomePage";
-import SingleProduct from "./Components/Pages/SingleProduct";
-import Cart from "./Components/Pages/Cart";
+import Categories from "./Pages/Categories";
+import Home from "./Pages/HomePage";
+import SingleProduct from "./Pages/SingleProduct";
+import Cart from "./Pages/Cart";
 import CartProvider from "./Components/ContextApi/CartProvider";
 import { Navbar } from "./Components/BaseLayout";
 import "./index.css";

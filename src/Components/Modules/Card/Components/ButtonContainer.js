@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { StyleBtnContainer, StyleCardBtn } from "../CardStyle";
+import { StyleBtnContainer, StyleCardBtn } from "../StyleCard";
 // import { CartContext } from "../../../ContextApi/CartContext";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { addToCart } from "../../../../redux/cart/cart-actions";

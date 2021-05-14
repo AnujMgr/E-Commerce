@@ -24,10 +24,12 @@ export default class Api {
     return this.init().get("/categories");
   };
 
+  getCategoryBySlug = (slug) => {
+    return this.init().get(`/categories?slug=${slug}`);
+  };
+
   getProductByCategory = (slug, page, limit) => {
-    return this.init().get(
-      `/products?category=${slug}&&_start=${page}&_limit=${limit}`
-    );
+    return this.init().get(`/products?category=${slug}&&_start=0&_limit=10}`);
   };
 
   addNewUser = (data) => {

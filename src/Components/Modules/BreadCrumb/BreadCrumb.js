@@ -1,16 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { StyleBreadCrumb } from "./StyleBreadCrumb";
 
 function BreadCrumb({ category }) {
   return (
-    <BreadCrumb>
+    <StyleBreadCrumb>
       <Link to="/">Home</Link>
-      {category.map((category) => {
-        <Link to={`/Category/` + category.slug} title={category.name}>
-          {category.name}
-        </Link>;
-      })}
-    </BreadCrumb>
+      <Link to={`/categories/` + category.slug} title={category.name}>
+        {category.name}
+      </Link>
+    </StyleBreadCrumb>
   );
 }
 

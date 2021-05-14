@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-const BreadCrumb = styled.div`
-  width: 96%;
+export const StyleBreadCrumb = styled.div`
+  width: 100%;
   font-size: 0.8rem;
-  padding: 3% 0;
   a:not(:last-of-type) {
     color: black;
     font-weight: 500;
@@ -14,7 +13,6 @@ const BreadCrumb = styled.div`
   a:last-child {
     color: rgb(107, 106, 106);
     font-weight: 600;
-    cursor: none;
   }
   a:not(:first-of-type) {
     &::before {
@@ -23,5 +21,3 @@ const BreadCrumb = styled.div`
     }
   }
 `;
-
-export default BreadCrumb;

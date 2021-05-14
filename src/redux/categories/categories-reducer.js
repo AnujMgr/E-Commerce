@@ -12,3 +12,12 @@ export const categoriesReducer = (state = initialState, { type, payload }) => {
       return state;
   }
 };
+
+export const selectedCategoryReducer = (state = {}, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.SET_SELECTED_CATEGORY:
+      return { ...state, ...payload };
+    default:
+      return state;
+  }
+};

@@ -14,7 +14,7 @@ import {
   StyleNewPrice,
   StyleOldPrice,
   StyleOverlay,
-} from "./CardStyle";
+} from "./StyleCard";
 
 import CreateStar from "../CreateStar";
 import ButtonContainer from "./Components/ButtonContainer";
@@ -35,7 +35,6 @@ const Card = (props) => {
           </StyleRibbon>
         )}
         {/* Brand Title */}
-        <StyleBrandTitle>{product.brand}</StyleBrandTitle>
 
         <div className="pos-relative">
           {/* Add to Cart Options overlay */}
@@ -51,6 +50,7 @@ const Card = (props) => {
             setVisibility={setVisibility}
           />
         </div>
+        <StyleBrandTitle>{product.brand}</StyleBrandTitle>
 
         <Link to={"/product/" + product.slug}>
           <StyleCardContent>

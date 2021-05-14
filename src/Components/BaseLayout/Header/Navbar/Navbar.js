@@ -55,7 +55,12 @@ const Navbar = () => {
         <StyleWrapper bgColor="#5f5c5cf7">
           <SecondNavBar>
             {categories.map((category) => {
-              return <p key={category.id}>{category.name}</p>;
+              return (
+                <Link to={`/categories/${category.slug}`} key={category.id}>
+                  {category.name}
+                </Link>
+              );
+              // <p key={category.id}>{category.name}</p>;
             })}
           </SecondNavBar>
         </StyleWrapper>

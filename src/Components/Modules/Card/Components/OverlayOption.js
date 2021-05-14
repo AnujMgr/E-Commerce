@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { StyleOptionOverlay } from "../CardStyle";
+import { StyleOptionOverlay } from "../StyleCard";
 import { CartContext } from "../../../ContextApi/CartContext";
 
-const OverlayOption = props => {
+const OverlayOption = (props) => {
   const { handleAddToCart } = useContext(CartContext);
   const { product, visibility, setVisibility } = props;
   return (

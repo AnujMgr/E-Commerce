@@ -1,26 +1,17 @@
-import React, { useState } from 'react';
+import React from "react";
+import { CheckBoxContainer } from "./CheckboxStyle";
 
-const Checkbox = (props) => {
-
-  	const [isChecked, setChecked] = useState(false);
-	
-	const handleCheckbox = () => {
-		console.log(props.brandId)
-		if(isChecked){
-			setChecked(false);
-		}
-		else{
-			setChecked(true);
-		}
-	}
-
-	return (
-  		<input 
-	  		type = "checkbox" 
-		  	checked = { isChecked } 
-		  	onChange = { handleCheckbox } 
-	  	/>
-	  	);
-	};
+const Checkbox = ({ name, handleFilterItems, isChecked }) => {
+  return (
+    <CheckBoxContainer>
+      <input
+        type="checkbox"
+        checked={isChecked}
+        onChange={(e) => handleFilterItems(name, !isChecked)}
+      ></input>
+      <span>{name}</span>
+    </CheckBoxContainer>
+  );
+};
 
 export default Checkbox;
