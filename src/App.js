@@ -26,7 +26,6 @@ const App = () => {
     const fetchCategories = () => {
       console.log("I am fetching Categories");
       dispatch(requestStarted(requestName));
-
       api
         .getCategories()
         .then((response) => {

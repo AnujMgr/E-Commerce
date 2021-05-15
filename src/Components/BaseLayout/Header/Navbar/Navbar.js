@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   NavBar,
   SecondNavBar,
@@ -10,14 +10,14 @@ import {
 } from "./StyleNavbar";
 import { StyleCartDropDown } from "../NavBarStyle";
 import { Link } from "react-router-dom";
-import { BsHeart } from "react-icons/bs";
+import { FiShoppingCart } from "react-icons/fi";
 import Search from "../Search/Search";
 import { useSelector } from "react-redux";
 import { namedRequestsInProgress } from "../../../../redux/RequestHandler/request-selectors";
 import RequestsEnum from "../../../../redux/RequestHandler/request-list";
 
 const Navbar = () => {
-  const [activeMenu, setActiveMenu] = useState("men");
+  // const [activeMenu, setActiveMenu] = useState("men");
   const requestState = useSelector((state) => state.requests);
   const { categories } = useSelector((state) => state.categories);
   const loading = namedRequestsInProgress(
@@ -42,7 +42,7 @@ const Navbar = () => {
             </ListItem>
             <ListItem>
               <Link to="/cart">
-                <BsHeart className="large-font" />
+                <FiShoppingCart color="white" size="1.4em" />
               </Link>
               {/* <Link to="/cart">
               <StyleCartBadge className="icon-favorite_outline large-font"></StyleCartBadge>
@@ -51,8 +51,8 @@ const Navbar = () => {
           </StyleRightNavLinks>
         </NavBar>
       </StyleWrapper>
-      {!loading ? (
-        <StyleWrapper bgColor="#5f5c5cf7">
+      <StyleWrapper bgColor="#5f5c5cf7">
+        {!loading ? (
           <SecondNavBar>
             {categories.map((category) => {
               return (
@@ -63,10 +63,10 @@ const Navbar = () => {
               // <p key={category.id}>{category.name}</p>;
             })}
           </SecondNavBar>
-        </StyleWrapper>
-      ) : (
-        <p>Loading...</p>
-      )}
+        ) : (
+          <p>Loading...</p>
+        )}
+      </StyleWrapper>
     </>
   );
 };

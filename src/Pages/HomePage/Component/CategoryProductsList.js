@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   FeatureCard,
   FluidImage,
@@ -12,10 +13,12 @@ function CategoryProductsList({ categories }) {
       <GridContainer gap="0.5em">
         {categories.map((category) => {
           return (
-            <FeatureCard>
-              <FluidImage src={category.image} />
-              <h1>{category.name}</h1>
-              <p>Summer is Comming</p>
+            <FeatureCard key={category.id}>
+              <Link to={`/categories/${category.slug}`}>
+                <FluidImage src={category.image} />
+                <h1>{category.name}</h1>
+                <p>Summer is Comming</p>
+              </Link>
             </FeatureCard>
           );
         })}

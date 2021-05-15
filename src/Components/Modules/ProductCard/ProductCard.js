@@ -1,4 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { addToCart } from "../../../redux/cart/cart-actions";
 import CartCounter from "./CartCounter";
 import {
   StyleCard,
@@ -8,24 +11,33 @@ import {
   StyleAddToCartBtn,
 } from "./StyleCard";
 
-function ProductCard() {
+function ProductCard({ product }) {
+  const { name, image, brand, price } = product;
+  const dispatch = useDispatch();
+  function handleAddToCart(product) {
+    dispatch(addToCart(product));
+  }
   return (
     <StyleCard>
-      <figure>
-        <img src="https://picsum.photos/1200/800" />
-      </figure>
-      <StyleCardBody>
-        <StyleCardDetail>
-          <div>
-            <h5>Apple</h5>
-            <p>Iphone 10 XS sfsjflsa lsfasjdk</p>
-          </div>
-          <span>$ 200</span>
-        </StyleCardDetail>
-      </StyleCardBody>
+      <Link to="/">
+        <figure>
+          <img src={image} alt={name} />
+        </figure>
+        <StyleCardBody>
+          <StyleCardDetail>
+            <div>
+              <h5>{brand}</h5>
+              <p>{name}</p>
+            </div>
+            <span>$ {price}</span>
+          </StyleCardDetail>
+        </StyleCardBody>
+      </Link>
       <StyleCardFooter>
         <CartCounter />
-        <StyleAddToCartBtn>Add to Cart</StyleAddToCartBtn>
+        <StyleAddToCartBtn onClick={(e) => handleAddToCart(product)}>
+          Add to Cart
+        </StyleAddToCartBtn>
       </StyleCardFooter>
     </StyleCard>
   );

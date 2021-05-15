@@ -69,7 +69,7 @@ export const ListItem = styled.li`
   color: #fff;
 `;
 
-const Overlay = styled.div`
+export const Overlay = styled.div`
   position: fixed;
   visibility: hidden;
   opacity: 0;

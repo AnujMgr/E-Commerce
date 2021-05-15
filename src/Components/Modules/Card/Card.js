@@ -21,7 +21,6 @@ import ButtonContainer from "./Components/ButtonContainer";
 import OverlayOption from "./Components/OverlayOption";
 
 const Card = (props) => {
-  console.log("i am Card");
   const [visibility, setVisibility] = useState("hidden");
   const { product } = props;
 

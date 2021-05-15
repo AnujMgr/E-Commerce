@@ -13,7 +13,6 @@ export const requestReducer = (state = initialState, { type, request }) => {
       );
 
       if (existingCall) {
-        console.log(existingCall);
         return {
           ...state,
           requests: state.requests.map((req) =>

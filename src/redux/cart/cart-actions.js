@@ -3,7 +3,7 @@ import { ActionTypes } from "./cart-types";
 export const addToCart = (itemId) => {
   return {
     type: ActionTypes.ADD_TO_CART,
-    payload: { id: itemId },
+    payload: { cartItem: itemId },
   };
 };
 

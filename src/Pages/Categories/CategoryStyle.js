@@ -5,16 +5,19 @@ export const GridContainer = styled.div`
   grid-template-columns: 18em 1fr;
   grid-template-rows: 100%;
   grid-column-gap: 1.5em;
+  max-width: 1300px;
+  margin: auto;
 `;
 
 export const ProductsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
   grid-column-gap: 0.5em;
+  grid-row-gap: 1.5em;
 `;
 
 export const FilterContainer = styled.div`
-  padding: 0 1.5em;
+  padding: 0;
   width: 100%;
   margin-right: auto;
 `;
@@ -41,6 +44,7 @@ export const FilterHeader = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+
 export const ClearButton = styled.button`
   border: 0;
   margin: 0;

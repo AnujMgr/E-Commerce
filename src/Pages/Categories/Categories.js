@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { GridContainer } from "./CategoryStyle";
 import { useParams } from "react-router";
 import Api from "../../helper/api";
@@ -55,6 +55,7 @@ const Categories = () => {
 
   useEffect(() => {
     const fetchProducts = async (slug) => {
+      console.log("Fetch Product");
       dispatch(requestStarted(RequestProducts));
       api
         .getProductByCategory(slug)

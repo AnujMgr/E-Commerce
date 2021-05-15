@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { StyleBtnContainer, StyleCardBtn } from "../StyleCard";
 // import { CartContext } from "../../../ContextApi/CartContext";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { addToCart } from "../../../../redux/cart/cart-actions";
 // import { connect } from "react-redux";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const ButtonContainer = ({ product, setVisibility }) => {
   const dispatch = useDispatch();

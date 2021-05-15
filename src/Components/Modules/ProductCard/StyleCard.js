@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyleCard = styled.div`
   height: 100%;
-  max-height: 25em;
+  max-height: 26em;
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
   overflow: hidden;
@@ -18,7 +18,7 @@ export const StyleCard = styled.div`
   }
 `;
 export const StyleCardBody = styled.div`
-  padding: 1em 0.5em;
+  padding: 0.8em 1em;
   div {
     display: flex;
     justify-content: space-between;
@@ -62,8 +62,8 @@ export const StyleCardDetail = styled.div`
 export const StyleCardFooter = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 0.5em;
-  padding-bottom: 0.5em;
+  padding: 0 1em;
+  padding-bottom: 0.8em;
 `;
 
 export const StyleCartCounter = styled.div`
@@ -80,6 +80,9 @@ export const StyleCartCounter = styled.div`
     padding: 0.4rem;
     font-size: 1em;
   }
+  button {
+    cursor: pointer;
+  }
 
   span {
     border-left: 0;
@@ -88,7 +91,7 @@ export const StyleCartCounter = styled.div`
 `;
 export const StyleAddToCartBtn = styled.button`
   border: 1px solid #000;
-  padding: 0 0.8rem;
+  padding: 0.6rem 0.8rem;
   border-radius: 50px;
   cursor: pointer;
 `;
