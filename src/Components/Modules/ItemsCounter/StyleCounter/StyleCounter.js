@@ -5,7 +5,7 @@ const StyleCounter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #e8d5d5;
+  border: 1px solid #000;
 `;
 
 export default StyleCounter;

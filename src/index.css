@@ -176,10 +176,12 @@ button {
   width: 100%;
 }
 .react-slideshow-container .nav:first-of-type {
-  margin-right: -3rem;
+  position: absolute;
+  left: 30px;
 }
 .react-slideshow-container .nav:last-of-type {
-  margin-left: -3rem;
+  position: absolute;
+  right: 30px;
 }
 
 .border-bottom {

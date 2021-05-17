@@ -14,7 +14,7 @@ function CategoryProductsList({ categories }) {
         {categories.map((category) => {
           return (
             <FeatureCard key={category.id}>
-              <Link to={`/categories/${category.slug}`}>
+              <Link to={`/category/${category.slug}`}>
                 <FluidImage src={category.image} />
                 <h1>{category.name}</h1>
                 <p>Summer is Comming</p>

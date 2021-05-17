@@ -11,8 +11,8 @@ export const GridContainer = styled.div`
 
 export const ProductsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
-  grid-column-gap: 0.5em;
+  grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
+  grid-column-gap: 0.8em;
   grid-row-gap: 1.5em;
 `;
 
@@ -29,10 +29,12 @@ export const StyleFilterList = styled.div`
 
 export const StyleHeader = styled.div`
   text-align: center;
-  margin: 2em 0;
+  padding: 2em 0;
+  margin-bottom: 1em;
   h1 {
-    font-weight: bold;
+    font-weight: normal;
     color: #6b6a6a;
+    font-size: 2.2rem;
   }
 `;
 

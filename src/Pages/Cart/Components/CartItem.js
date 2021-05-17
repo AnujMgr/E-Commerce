@@ -7,7 +7,8 @@ import {
   StyleBrandTitle,
   StyleItemDetails,
   StylePriceContainer,
-} from "../CartStyle";
+  StyleRemoveBtn,
+} from "../StyleCart";
 
 // import {
 //   StyleRibbon,
@@ -16,9 +17,16 @@ import {
 // } from "../../../Modules/Card/CardStyle";
 
 import { FormatNumber, Counter } from "../../../Components/Modules";
-const CartItem = (props) => {
-  const { id, title, price, brand, image, discount, noOfOrder } = props.item;
-  const { handleCartDecrement, handleCartIncrement } = props;
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../../../redux/cart/cart-actions";
+const CartItem = ({ product, noOfItem }) => {
+  const { id, name, price, brand, image, discount, noOfOrder } = product;
+  const { handleCartDecrement, handleCartIncrement } = noOfItem;
+  const dispatch = useDispatch();
+
+  function handleRemoveFromCart(id) {
+    dispatch(removeFromCart(id));
+  }
 
   return (
     <React.Fragment>
@@ -30,30 +38,34 @@ const CartItem = (props) => {
         )} */}
 
         <StyleItemDetails>
-          <StyleCartImg src={image} alt={title} />
-          <div className="m-0-2">
-            <StyleBrandTitle> {brand} </StyleBrandTitle>
-            <StyleItemName> {title} </StyleItemName>
+          <StyleCartImg src={image} alt={name} />
+          <div>
+            <div>
+              <StyleBrandTitle> {brand} </StyleBrandTitle>
+              <StyleItemName> {name} </StyleItemName>
+            </div>
+            <StyleRemoveBtn onClick={(e) => handleRemoveFromCart(id)}>
+              REMOVE ITEM
+            </StyleRemoveBtn>
 
-            <div className="flex">
+            {/* <div className="flex">
               {props.item.size ? (
                 <p className="small-text m-r-10">SIZE: {props.item.size} </p>
               ) : null}
               {props.item.color ? (
                 <p className="small-text"> Color: {props.item.color}</p>
               ) : null}
-            </div>
+            </div> */}
           </div>
         </StyleItemDetails>
 
-        <Counter
-          id={id}
-          noOfOrder={noOfOrder}
-          handleCartDecrement={handleCartDecrement}
-          handleCartIncrement={handleCartIncrement}
-        />
-
         <StylePriceContainer>
+          <Counter
+            id={id}
+            noOfOrder={noOfOrder}
+            handleCartDecrement={handleCartDecrement}
+            handleCartIncrement={handleCartIncrement}
+          />
           {Number(discount) === null || Number(discount) === 0 ? (
             <StyleCartPrice>{FormatNumber(price)}</StyleCartPrice>
           ) : (
@@ -66,12 +78,12 @@ const CartItem = (props) => {
             <StyleOldPrice> {FormatNumber(price)}</StyleOldPrice>
           )} */}
 
-          <button
+          {/* <button
             className="btn-danger small-text m-l-auto"
-            onClick={() => props.removeCartItem(id)}
+            // onClick={() => props.removeCartItem(id)}
           >
             Delete <span> | </span> X
-          </button>
+          </button> */}
         </StylePriceContainer>
       </StyleCartItem>
     </React.Fragment>

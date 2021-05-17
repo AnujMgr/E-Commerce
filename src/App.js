@@ -4,7 +4,7 @@ import Categories from "./Pages/Categories";
 import Home from "./Pages/HomePage";
 import SingleProduct from "./Pages/SingleProduct";
 import Cart from "./Pages/Cart";
-import CartProvider from "./Components/ContextApi/CartProvider";
+// import CartProvider from "./Components/ContextApi/CartProvider";
 import { Navbar } from "./Components/BaseLayout";
 import "./index.css";
 import { useDispatch } from "react-redux";
@@ -16,6 +16,7 @@ import {
 } from "./redux/RequestHandler/request-actions";
 import RequestsEnum from "./redux/RequestHandler/request-list";
 import { setCategories } from "./redux/categories/categories-actions";
+import PageNotFound from "./Pages/PageNotFound/PageNotFound";
 
 const App = () => {
   const api = new Api();
@@ -24,7 +25,6 @@ const App = () => {
 
   useEffect(() => {
     const fetchCategories = () => {
-      console.log("I am fetching Categories");
       dispatch(requestStarted(requestName));
       api
         .getCategories()
@@ -41,15 +41,16 @@ const App = () => {
   }, []);
   return (
     <BrowserRouter>
-      <CartProvider>
-        <Navbar />
-        <Switch>
-          <Route path="/" component={Home} exact />
-          <Route path="/cart" component={Cart} exact />
-          <Route path="/categories/:slug" component={Categories} exact />
-          <Route path="/product/:slug" component={SingleProduct} exact />
-        </Switch>
-      </CartProvider>
+      {/* <CartProvider> */}
+      <Navbar />
+      <Switch>
+        <Route path="/" component={Home} exact />
+        <Route path="/cart" component={Cart} exact />
+        <Route path="/category/:slug" component={Categories} exact />
+        <Route path="/product/:slug" component={SingleProduct} exact />
+        <Route component={PageNotFound} exact />
+      </Switch>
+      {/* </CartProvider> */}
     </BrowserRouter>
   );
 };

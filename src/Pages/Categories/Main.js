@@ -1,8 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Card } from "../../Components/Modules";
+import Loading from "../../Components/Modules/Loading";
 import ProductCard from "../../Components/Modules/ProductCard";
-import { requestStarted } from "../../redux/RequestHandler/request-actions";
 import RequestsEnum from "../../redux/RequestHandler/request-list";
 import { namedRequestsInProgress } from "../../redux/RequestHandler/request-selectors";
 import { ProductsContainer } from "./CategoryStyle";
@@ -16,7 +15,6 @@ function Main() {
     requestState,
     RequestsEnum.getCatProducts
   );
-
   return (
     <div>
       <FilterList />
@@ -27,7 +25,7 @@ function Main() {
             return <ProductCard product={product} key={product.id} />;
           })
         ) : (
-          <p>Loading</p>
+          <Loading />
         )}
       </ProductsContainer>
     </div>

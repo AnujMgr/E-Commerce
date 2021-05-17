@@ -6,7 +6,6 @@ export const StyleCard = styled.div`
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
   overflow: hidden;
-
   figure {
     margin: 0;
     height: 17em;
@@ -19,6 +18,8 @@ export const StyleCard = styled.div`
 `;
 export const StyleCardBody = styled.div`
   padding: 0.8em 1em;
+  padding-top: 1.2em;
+
   div {
     display: flex;
     justify-content: space-between;
@@ -41,9 +42,12 @@ export const StyleCardDetail = styled.div`
     margin-right: 0.3em;
     h5 {
       font-size: 1.3rem;
+      width: 100%;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
     p {
-      width: 180px;
+      width: 100%;
       text-overflow: ellipsis;
       overflow: hidden;
       font-size: 1rem;
@@ -69,6 +73,7 @@ export const StyleCardFooter = styled.div`
 export const StyleCartCounter = styled.div`
   display: flex;
   align-items: center;
+  width: 100%;
   button,
   span {
     display: inline-flex;
@@ -76,22 +81,32 @@ export const StyleCartCounter = styled.div`
     align-items: center;
     height: 2em;
     width: 2em;
-    border: 1px solid #000;
     padding: 0.4rem;
     font-size: 1em;
   }
+
   button {
     cursor: pointer;
-  }
-
-  span {
-    border-left: 0;
-    border-right: 0;
+    border: 1px solid #000;
+    background-color: #fff;
+    transition: all ease-in-out 0.2s;
+    :hover {
+      background-color: #000;
+      color: #fff;
+    }
   }
 `;
+
 export const StyleAddToCartBtn = styled.button`
   border: 1px solid #000;
   padding: 0.6rem 0.8rem;
-  border-radius: 50px;
   cursor: pointer;
+  background-color: #fff;
+  transition: all ease-in-out 0.2s;
+  width: 100%;
+
+  :hover {
+    background-color: #000;
+    color: #fff;
+  }
 `;

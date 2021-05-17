@@ -99,15 +99,18 @@ export const BrandLogo = styled(Link)`
 
 export const StyleCartBadge = styled.span`
   position: absolute;
-  font-family: "Roboto";
-  font-size: 0.8rem;
-  bottom: 45px;
-  right: 7px;
-  background: #d78e8e;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem !important;
+  background: #121fa3;
   color: #d9d7d7;
   border-radius: 50%;
-  padding: 6px 8px;
+  padding: 6px;
   font-weight: 500;
+  bottom: 15px;
+  height: 25px;
+  width: 25px;
 `;
 
 export const MenuLink = styled(Link)`

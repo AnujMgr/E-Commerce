@@ -10,7 +10,6 @@ const Home = () => {
   return (
     <React.Fragment>
       <Banner />
-
       <CategoryProductsList categories={categories.slice(0, 4)} />
     </React.Fragment>
   );

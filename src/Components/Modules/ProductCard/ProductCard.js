@@ -1,7 +1,7 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addToCart } from "../../../redux/cart/cart-actions";
+import { addToCart, removeFromCart } from "../../../redux/cart/cart-actions";
 import CartCounter from "./CartCounter";
 import {
   StyleCard,
@@ -12,32 +12,50 @@ import {
 } from "./StyleCard";
 
 function ProductCard({ product }) {
-  const { name, image, brand, price } = product;
+  const { id, name, image, brand, price, slug } = product;
   const dispatch = useDispatch();
+
   function handleAddToCart(product) {
     dispatch(addToCart(product));
   }
+
+  function handleRemoveFromCart() {
+    dispatch(removeFromCart(id));
+  }
+  const cartItem = useSelector((state) => state.cart.cart);
+
+  const isInCart =
+    cartItem.filter((cart) => cart.cartItem.id === id).length > 0;
+
   return (
     <StyleCard>
-      <Link to="/">
+      <Link to={`/product/${slug}`}>
         <figure>
           <img src={image} alt={name} />
         </figure>
         <StyleCardBody>
           <StyleCardDetail>
             <div>
-              <h5>{brand}</h5>
-              <p>{name}</p>
+              <h5>{name}</h5>
+              <p>{brand}</p>
             </div>
             <span>$ {price}</span>
           </StyleCardDetail>
         </StyleCardBody>
       </Link>
       <StyleCardFooter>
-        <CartCounter />
-        <StyleAddToCartBtn onClick={(e) => handleAddToCart(product)}>
-          Add to Cart
-        </StyleAddToCartBtn>
+        {isInCart ? (
+          <>
+            <CartCounter />
+            <StyleAddToCartBtn onClick={(e) => handleRemoveFromCart(id)}>
+              Remove From Cart
+            </StyleAddToCartBtn>
+          </>
+        ) : (
+          <StyleAddToCartBtn onClick={(e) => handleAddToCart(product)}>
+            Add to Cart
+          </StyleAddToCartBtn>
+        )}
       </StyleCardFooter>
     </StyleCard>
   );

@@ -7,6 +7,7 @@ import {
   StyleLeftNavLinks,
   StyleRightNavLinks,
   StyleWrapper,
+  StyleCartBadge,
 } from "./StyleNavbar";
 import { StyleCartDropDown } from "../NavBarStyle";
 import { Link } from "react-router-dom";
@@ -20,6 +21,7 @@ const Navbar = () => {
   // const [activeMenu, setActiveMenu] = useState("men");
   const requestState = useSelector((state) => state.requests);
   const { categories } = useSelector((state) => state.categories);
+  const { cart } = useSelector((state) => state.cart);
   const loading = namedRequestsInProgress(
     requestState,
     RequestsEnum.getCategories
@@ -33,7 +35,6 @@ const Navbar = () => {
             <BrandLogo to="/">
               <img src="/logo192.png" alt="Logo" />
             </BrandLogo>
-
             <Search />
           </StyleLeftNavLinks>
           <StyleRightNavLinks>
@@ -41,12 +42,16 @@ const Navbar = () => {
               <StyleCartDropDown />
             </ListItem>
             <ListItem>
-              <Link to="/cart">
+              <Link className="pos-relative" to="/cart">
                 <FiShoppingCart color="white" size="1.4em" />
+                {cart.length !== 0 ? (
+                  <StyleCartBadge className="icon-favorite_outline large-font">
+                    {cart.length}
+                  </StyleCartBadge>
+                ) : (
+                  <></>
+                )}
               </Link>
-              {/* <Link to="/cart">
-              <StyleCartBadge className="icon-favorite_outline large-font"></StyleCartBadge>
-            </Link> */}
             </ListItem>
           </StyleRightNavLinks>
         </NavBar>
@@ -56,11 +61,10 @@ const Navbar = () => {
           <SecondNavBar>
             {categories.map((category) => {
               return (
-                <Link to={`/categories/${category.slug}`} key={category.id}>
+                <Link to={`/category/${category.slug}`} key={category.id}>
                   {category.name}
                 </Link>
               );
-              // <p key={category.id}>{category.name}</p>;
             })}
           </SecondNavBar>
         ) : (

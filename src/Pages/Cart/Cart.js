@@ -7,7 +7,8 @@ import {
   StyleCartHeader,
   StyleHeader,
   StyleGridContainer,
-} from "./CartStyle";
+  StyleWrapper,
+} from "./StyleCart";
 import CartItem from "./Components/CartItem";
 import { useSelector } from "react-redux";
 
@@ -15,14 +16,14 @@ const Cart = () => {
   // console.log(cartItem);
   // const { cartItem, handleRemoveCart } = useContext(CartContext);
   const cartItem = useSelector((state) => state.cart.cart);
-  console.log(cartItem);
+
   return (
     <React.Fragment>
       {cartItem.length !== 0 ? (
-        <div className="wrap">
+        <StyleWrapper>
+          <StyleCartHeader> My Shopping Bag </StyleCartHeader>
           <StyleGridContainer>
             <StyleCartWrapper>
-              <StyleCartHeader> My Shopping Bag </StyleCartHeader>
               <StyleDescription>
                 You Have {cartItem.length} items in your Cart.
               </StyleDescription>
@@ -34,8 +35,9 @@ const Cart = () => {
               {cartItem.map((product) => {
                 return (
                   <CartItem
-                    key={product.id}
-                    item={product}
+                    key={product.cartItem.id}
+                    product={product.cartItem}
+                    noOfItem={product.qty}
                     // removeCartItem={handleRemoveCart}
                     // handleCartIncrement={context.handleOrderIncrement}
                     // handleCartDecrement={context.handleOrderDecrement}
@@ -55,7 +57,7 @@ const Cart = () => {
               </StyleOrderSummary>
             </div>
           </StyleGridContainer>
-        </div>
+        </StyleWrapper>
       ) : (
         <h2 className="center m-5-0">You Cart is Empty</h2>
       )}

@@ -55,7 +55,6 @@ const Categories = () => {
 
   useEffect(() => {
     const fetchProducts = async (slug) => {
-      console.log("Fetch Product");
       dispatch(requestStarted(RequestProducts));
       api
         .getProductByCategory(slug)

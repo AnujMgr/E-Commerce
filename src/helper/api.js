@@ -32,6 +32,10 @@ export default class Api {
     return this.init().get(`/products?category=${slug}&&_start=0&_limit=10}`);
   };
 
+  getCurrentProduct = (slug) => {
+    return this.init().get(`/products?slug=${slug}`);
+  };
+
   addNewUser = (data) => {
     return this.init().post("/users", data);
   };
