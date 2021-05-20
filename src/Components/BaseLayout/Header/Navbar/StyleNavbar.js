@@ -103,8 +103,8 @@ export const StyleCartBadge = styled.span`
   align-items: center;
   justify-content: center;
   font-size: 1rem !important;
-  background: #121fa3;
-  color: #d9d7d7;
+  background: #b39c9c;
+  color: #000;
   border-radius: 50%;
   padding: 6px;
   font-weight: 500;

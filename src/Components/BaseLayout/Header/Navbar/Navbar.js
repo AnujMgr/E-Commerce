@@ -68,7 +68,9 @@ const Navbar = () => {
             })}
           </SecondNavBar>
         ) : (
-          <p>Loading...</p>
+          <SecondNavBar>
+            <Link to="">Loading...</Link>
+          </SecondNavBar>
         )}
       </StyleWrapper>
     </>

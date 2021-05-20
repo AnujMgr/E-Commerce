@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { GridContainer } from "./CategoryStyle";
 import { useParams } from "react-router";
 import Api from "../../helper/api";
@@ -21,19 +21,24 @@ const Categories = () => {
   const dispatch = useDispatch();
   const { slug } = useParams();
   const api = new Api();
-  const page = 1;
-  const limit = 8;
+  // const page = 1;
+  // const limit = 8;
   const RequestCategories = RequestsEnum.getCategories;
   const RequestProducts = RequestsEnum.getCatProducts;
 
+  // const [offset, setOffset] = useState(0);
+  const [page, setPage] = useState(0);
+  const [limit, setLimit] = useState(12);
+
   const items = ["Samsung", "Nokia", "LG"];
 
+  const handlePageClick = (e) => {
+    const selectedPage = e.selected;
+    setPage(selectedPage + 1);
+  };
+
   useEffect(() => {
-    function filters() {
-      items.map((name) => {
-        dispatch(setFilter({ name, isChecked: false }));
-      });
-    }
+    items.map((name) => dispatch(setFilter({ name, isChecked: false })));
 
     const fetchCurrentCategory = async (slug) => {
       dispatch(requestStarted(RequestCategories));
@@ -50,14 +55,13 @@ const Categories = () => {
     };
 
     fetchCurrentCategory(slug, page, limit);
-    filters();
-  }, []);
+  }, [slug]);
 
   useEffect(() => {
-    const fetchProducts = async (slug) => {
+    const fetchProducts = async (slug, page, limit) => {
       dispatch(requestStarted(RequestProducts));
       api
-        .getProductByCategory(slug)
+        .getProductByCategory(slug, page, limit)
         .then((response) => {
           dispatch(setCatProducts(response.data));
           dispatch(requestFinished(RequestProducts));
@@ -75,7 +79,7 @@ const Categories = () => {
       <Header />
       <GridContainer>
         <Aside />
-        <Main />
+        <Main handlePageClick={handlePageClick} currentPage={page} />
       </GridContainer>
     </React.Fragment>
   );

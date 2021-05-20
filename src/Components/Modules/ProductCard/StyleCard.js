@@ -70,33 +70,6 @@ export const StyleCardFooter = styled.div`
   padding-bottom: 0.8em;
 `;
 
-export const StyleCartCounter = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  button,
-  span {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    height: 2em;
-    width: 2em;
-    padding: 0.4rem;
-    font-size: 1em;
-  }
-
-  button {
-    cursor: pointer;
-    border: 1px solid #000;
-    background-color: #fff;
-    transition: all ease-in-out 0.2s;
-    :hover {
-      background-color: #000;
-      color: #fff;
-    }
-  }
-`;
-
 export const StyleAddToCartBtn = styled.button`
   border: 1px solid #000;
   padding: 0.6rem 0.8rem;

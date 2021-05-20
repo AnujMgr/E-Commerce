@@ -3,15 +3,13 @@ import styled from "styled-components";
 export const StyleBreadCrumb = styled.div`
   width: 100%;
   font-size: 0.8rem;
+  z-index: 9;
   a:not(:last-of-type) {
-    color: black;
+    color: #fff;
     font-weight: 500;
-    &:hover {
-      color: #241c69;
-    }
   }
   a:last-child {
-    color: rgb(107, 106, 106);
+    color: #fff;
     font-weight: 600;
   }
   a:not(:first-of-type) {

@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: 18em 1fr;
-  grid-template-rows: 100%;
   grid-column-gap: 1.5em;
   max-width: 1300px;
   margin: auto;
@@ -17,7 +16,7 @@ export const ProductsContainer = styled.div`
 `;
 
 export const FilterContainer = styled.div`
-  padding: 0;
+  padding: 0 1em;
   width: 100%;
   margin-right: auto;
 `;
@@ -28,14 +27,36 @@ export const StyleFilterList = styled.div`
 `;
 
 export const StyleHeader = styled.div`
+  position: relative;
   text-align: center;
   padding: 2em 0;
-  margin-bottom: 1em;
+  height: 18em;
+  margin-bottom: 2em;
+  background-color: #00000052;
+  background-image: url(${(props) => props.image});
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   h1 {
+    z-index: 9;
     font-weight: normal;
-    color: #6b6a6a;
+    color: #fff;
     font-size: 2.2rem;
   }
+`;
+
+export const StyleOverlay = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #000000a1;
+  top: 0;
+  bottom: 0;
 `;
 
 export const FilterHeader = styled.div`

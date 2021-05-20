@@ -14,10 +14,10 @@ export const removeFromCart = (itemId) => {
   };
 };
 
-export const modifyQty = (itemId, value) => {
+export const modifyQty = (id, qty) => {
   return {
     type: ActionTypes.MODIFY_QTY,
-    payload: { id: itemId, qty: value },
+    payload: { id: id, qty: qty },
   };
 };
 

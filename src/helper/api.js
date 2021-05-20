@@ -29,7 +29,9 @@ export default class Api {
   };
 
   getProductByCategory = (slug, page, limit) => {
-    return this.init().get(`/products?category=${slug}&&_start=0&_limit=10}`);
+    return this.init().get(
+      `products?category=${slug}&&_page=${page}&_limit=${limit}`
+    );
   };
 
   getCurrentProduct = (slug) => {

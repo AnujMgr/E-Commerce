@@ -15,7 +15,7 @@ function FilterList() {
     <StyleFilterList>
       {filter.map((filter) => {
         const { name, isChecked } = filter;
-        if (isChecked)
+        if (isChecked) {
           return (
             <StyleFilterCapsule
               onClick={(e) => handleFilter(name, false)}
@@ -35,6 +35,9 @@ function FilterList() {
               </span>
             </StyleFilterCapsule>
           );
+        } else {
+          return null;
+        }
       })}
     </StyleFilterList>
   );

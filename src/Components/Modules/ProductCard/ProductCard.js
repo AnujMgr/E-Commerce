@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart, removeFromCart } from "../../../redux/cart/cart-actions";
-import CartCounter from "./CartCounter";
+import CartCounter from "../CartCounter";
 import {
   StyleCard,
   StyleCardBody,
@@ -23,7 +23,6 @@ function ProductCard({ product }) {
     dispatch(removeFromCart(id));
   }
   const cartItem = useSelector((state) => state.cart.cart);
-
   const isInCart =
     cartItem.filter((cart) => cart.cartItem.id === id).length > 0;
 
@@ -46,7 +45,13 @@ function ProductCard({ product }) {
       <StyleCardFooter>
         {isInCart ? (
           <>
-            <CartCounter />
+            <CartCounter
+              id={id}
+              qty={cartItem.filter((cart) => cart.cartItem.id === id)[0].qty}
+              height={"2em"}
+              width={"2em"}
+              margin={"0 1em 0 0"}
+            />
             <StyleAddToCartBtn onClick={(e) => handleRemoveFromCart(id)}>
               Remove From Cart
             </StyleAddToCartBtn>

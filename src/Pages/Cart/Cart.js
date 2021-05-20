@@ -8,15 +8,23 @@ import {
   StyleHeader,
   StyleGridContainer,
   StyleWrapper,
+  StyleEmptyCartContainer,
+  StyleOrderSummaryItem,
+  StyleFlexSB,
 } from "./StyleCart";
 import CartItem from "./Components/CartItem";
 import { useSelector } from "react-redux";
+import { FormatNumber } from "../../Components/Modules";
 
 const Cart = () => {
-  // console.log(cartItem);
-  // const { cartItem, handleRemoveCart } = useContext(CartContext);
   const cartItem = useSelector((state) => state.cart.cart);
 
+  function getTotal(cartItem) {
+    let val = [];
+    cartItem.map((product) => val.push(product.cartItem.price * product.qty));
+    const total = val.reduce((a, b) => a + b, 0);
+    return total;
+  }
   return (
     <React.Fragment>
       {cartItem.length !== 0 ? (
@@ -33,33 +41,48 @@ const Cart = () => {
               </StyleHeader>
 
               {cartItem.map((product) => {
-                return (
-                  <CartItem
-                    key={product.cartItem.id}
-                    product={product.cartItem}
-                    noOfItem={product.qty}
-                    // removeCartItem={handleRemoveCart}
-                    // handleCartIncrement={context.handleOrderIncrement}
-                    // handleCartDecrement={context.handleOrderDecrement}
-                  />
-                );
+                return <CartItem key={product.cartItem.id} product={product} />;
               })}
             </StyleCartWrapper>
             <div>
               <StyleOrderSummary>
-                <StyleCartHeader>Order Summary </StyleCartHeader>
-                <StyleDescription>Price Details</StyleDescription>
+                <h2>Order Summary </h2>
+                <StyleFlexSB>
+                  <StyleDescription>Details</StyleDescription>
+                  <StyleDescription>Price</StyleDescription>
+                </StyleFlexSB>
+                {cartItem.map((product) => (
+                  <StyleOrderSummaryItem key={product.cartItem.id}>
+                    <p>
+                      {product.cartItem.name} ({product.qty})
+                    </p>
+                    <p>
+                      <b>
+                        {FormatNumber(product.cartItem.price * product.qty)}
+                      </b>
+                    </p>
+                  </StyleOrderSummaryItem>
+                ))}
+                <hr />
+                <StyleFlexSB>
+                  <p>
+                    <b>Total</b>
+                  </p>
+                  <p>
+                    <b>{FormatNumber(getTotal(cartItem))}</b>
+                  </p>
+                </StyleFlexSB>
                 {/* {context.handleOrderSummary()} */}
-                <StyleCheckOutBtn className="hoverable">
-                  {" "}
-                  Checkout
-                </StyleCheckOutBtn>
+                <StyleCheckOutBtn> Checkout</StyleCheckOutBtn>
               </StyleOrderSummary>
             </div>
           </StyleGridContainer>
         </StyleWrapper>
       ) : (
-        <h2 className="center m-5-0">You Cart is Empty</h2>
+        <StyleEmptyCartContainer>
+          <img src="/images/empty_cart.png" alt="Cart is Empty" />
+          <h2 className="center m-5-0">You Cart is Empty</h2>
+        </StyleEmptyCartContainer>
       )}
     </React.Fragment>
   );

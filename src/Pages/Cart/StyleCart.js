@@ -1,25 +1,23 @@
 import styled from "styled-components";
 import { device } from "../../Components/styles/mediaQuery";
+import { StylePrimaryButton } from "../../utils/CommonStyle";
 
 export const StyleWrapper = styled.div`
   width: 1300px;
   margin: auto;
 `;
 
-export const StyleCartItem = styled.div`
+export const StyleFlexSB = styled.div`
   display: flex;
-  position: relative;
   justify-content: space-between;
+`;
+
+export const StyleCartItem = styled(StyleFlexSB)`
+  position: relative;
   margin-bottom: 0.5em;
   padding: 25px;
   transition: box-shadow 0.25s;
   border-bottom: 1px solid #afaeae;
-  /* box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  &:hover {
-    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2),
-      0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  } */
 `;
 
 export const StyleCartWrapper = styled.div`
@@ -27,10 +25,8 @@ export const StyleCartWrapper = styled.div`
   padding: 0.5em;
 `;
 
-export const StyleCounter = styled.div`
+export const StyleCounter = styled(StyleFlexSB)`
   width: 90px;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
   border: 1px solid #000;
 `;
@@ -42,9 +38,8 @@ export const StyleCounterContainer = styled.div`
 
 export const StyleGridContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 22em;
+  grid-template-columns: 1fr 24em;
   grid-template-rows: auto;
-
   grid-column-gap: 1rem;
   width: 100%;
 
@@ -52,9 +47,7 @@ export const StyleGridContainer = styled.div`
   }
 `;
 
-export const StyleHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
+export const StyleHeader = styled(StyleFlexSB)`
   padding: 0 20px;
   margin: 10px 0;
   border-bottom: 1px solid #000;
@@ -77,50 +70,55 @@ export const StyleItemDetails = styled.div`
 
 export const StyleOrderSummary = styled.div`
   position: sticky;
-  top: 7.2em;
+  top: 0.5em;
   width: 100%;
-  right: 1em;
-  grid-area: summary;
+  border: 1px solid #000;
+  padding: 1rem;
+  margin-top: 3rem;
+  h2 {
+    text-align: center;
+  }
 `;
 
-export const StylePriceContainer = styled.div`
-  display: flex;
+export const StyleOrderSummaryItem = styled(StyleFlexSB)`
+  margin: 0.8em 0;
+  p {
+    margin: 0;
+  }
+`;
+
+export const StylePriceContainer = styled(StyleFlexSB)`
   flex-direction: column;
-  justify-content: space-between;
   text-align: right;
 `;
 
-export const StyleCheckOutBtn = styled.button`
-  background: #3321c2;
-  border: none;
-  border-radius: 5px;
-  height: 40px;
+// ===========================================
+// Buttons
+export const StyleCheckOutBtn = styled(StylePrimaryButton)`
+  height: 50px;
   width: 100%;
   font-size: 18px;
-  color: white;
   font-weight: 300;
 `;
 
-export const StyleCartImg = styled.img`
-  max-width: 12em;
-  height: auto;
-  width: 100%;
-  border-radius: 1rem;
-  margin-right: 1rem;
+export const StyleRemoveBtn = styled(StylePrimaryButton)`
+  padding: 0.6rem;
+  background-color: #fff;
+  width: 15em;
 `;
 
 export const StyleBrandTitle = styled.p`
-  padding-bottom: 10px;
-  color: #6b6f82;
+  color: black;
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 300;
 `;
 
 export const StyleCartHeader = styled.p`
   font-size: 1.5em;
   text-align: center;
   font-weight: 300;
-  margin: 2rem auto;
+  margin: 2rem 0;
 `;
 
 export const StyleCartPrice = styled.p`
@@ -136,21 +134,25 @@ export const StyleDescription = styled.p`
 `;
 
 export const StyleItemName = styled.p`
-  color: black;
+  padding-bottom: 10px;
+  color: #6b6f82;
   margin: 0;
-  font-size: 0.9rem;
-  font-weight: 300;
+  font-size: 1.4rem;
 `;
 
-export const StyleRemoveBtn = styled.button`
-  border: 0;
-  padding: 0.6rem;
-  border: 1px solid #000;
-  cursor: pointer;
-  background-color: #fff;
-  transition: all ease-in-out 0.4s;
-  :hover {
-    background-color: #000;
-    color: #fff;
+export const StyleCartImg = styled.img`
+  max-width: 12em;
+  height: auto;
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-right: 1rem;
+`;
+
+export const StyleEmptyCartContainer = styled.div`
+  margin: 2em auto;
+  text-align: center;
+  img {
+    width: 100%;
+    max-width: 500px;
   }
 `;
