@@ -58,7 +58,7 @@ const SingleProduct = () => {
         </StyleImageContainer>
         <StyleDescriptionContainer>
           <StyleProductBrand>{product.brand}</StyleProductBrand>
-          <StarRating star={2} />
+          <StarRating star={product.star} />
           <StyleProductTitle>{product.name}</StyleProductTitle>
           <p>{product.description}</p>
           <StyleProductPrice>$ {product.price}</StyleProductPrice>

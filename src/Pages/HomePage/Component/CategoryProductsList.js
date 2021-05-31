@@ -4,6 +4,7 @@ import {
   FluidImage,
   GridContainer,
   Wrapper,
+  StyleOverlay,
 } from "../HomeStyle/HomeStyle";
 
 function CategoryProductsList({ categories }) {
@@ -16,8 +17,12 @@ function CategoryProductsList({ categories }) {
             <FeatureCard key={category.id}>
               <Link to={`/category/${category.slug}`}>
                 <FluidImage src={category.image} />
-                <h1>{category.name}</h1>
-                <p>Summer is Comming</p>
+                <StyleOverlay>
+                  <div>
+                    <h1>{category.name}</h1>
+                    <p>Summer is Comming</p>
+                  </div>
+                </StyleOverlay>
               </Link>
             </FeatureCard>
           );

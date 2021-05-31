@@ -1,9 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { SortOption } from "../../Components/Modules";
 import Loading from "../../Components/Modules/Loading";
 import ProductCard from "../../Components/Modules/ProductCard";
+import Select from "../../Components/Modules/SelectOption/Select";
 import RequestsEnum from "../../redux/RequestHandler/request-list";
 import { namedRequestsInProgress } from "../../redux/RequestHandler/request-selectors";
+import { StyleFlexSB } from "../../utils/CommonStyle";
 import { ProductsContainer } from "./CategoryStyle";
 import FilterList from "./FilterList";
 
@@ -17,7 +20,11 @@ function Main() {
   );
   return (
     <div>
-      <FilterList />
+      <StyleFlexSB>
+        <FilterList />
+        <Select />
+      </StyleFlexSB>
+      <br />
       <ProductsContainer>
         {/* <ProductCard /> */}
         {!isLoading ? (

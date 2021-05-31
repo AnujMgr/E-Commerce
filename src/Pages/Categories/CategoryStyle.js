@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
+const wrapWidth = "1300px";
+
 export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: 18em 1fr;
   grid-column-gap: 1.5em;
-  max-width: 1300px;
+  max-width: ${wrapWidth};
   margin: auto;
 `;
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Categories from "./Pages/Categories";
 import Home from "./Pages/HomePage";
@@ -17,6 +17,7 @@ import {
 import RequestsEnum from "./redux/RequestHandler/request-list";
 import { setCategories } from "./redux/categories/categories-actions";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
+import { addToCart } from "./redux/cart/cart-actions";
 
 const App = () => {
   const api = new Api();
@@ -24,6 +25,7 @@ const App = () => {
   const requestName = RequestsEnum.getCategories;
 
   useEffect(() => {
+    // const todos = localStorage.getItem("cart");
     const fetchCategories = () => {
       dispatch(requestStarted(requestName));
       api
@@ -31,6 +33,7 @@ const App = () => {
         .then((response) => {
           dispatch(setCategories(response.data));
           dispatch(requestFinished(requestName));
+          // localStorage.setItem("cart", JSON.stringify(response.data));
         })
         .catch(function (error) {
           console.log(error);
@@ -39,6 +42,7 @@ const App = () => {
     };
     fetchCategories();
   }, []);
+
   return (
     <BrowserRouter>
       {/* <CartProvider> */}

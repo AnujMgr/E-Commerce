@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { device } from "../../../styles/mediaQuery";
-const height = "4em";
+const height = "4.5em";
+const color = "#000";
 
 export const StyleWrapper = styled.div`
   background-color: ${(props) => props.bgColor};
+  border-bottom: ${(props) => (props.border ? props.border : "none")};
+  box-shadow: ${(props) => (props.boxShadow ? props.boxShadow : "none")};
 `;
 
 export const NavBar = styled.div`
@@ -19,11 +22,7 @@ export const NavBar = styled.div`
 
 export const SecondNavBar = styled(NavBar)`
   height: 3em;
-  a {
-    color: #fff;
-    display: inline-flex;
-    align-items: center;
-  }
+  box-shadow: inset 0px -1px 0px #f3f3f4;
 `;
 
 export const StyleLeftNavLinks = styled.ul`
@@ -66,7 +65,7 @@ export const ListItem = styled.li`
   padding: 0.5rem;
   font-weight: 500;
   background-color: ${(props) => props.bgColor};
-  color: #fff;
+  color: ${color};
 `;
 
 export const Overlay = styled.div`
@@ -97,6 +96,46 @@ export const BrandLogo = styled(Link)`
   }
 `;
 
+export const NavWrapper = styled.div`
+  position: relative;
+  div {
+    position: absolute;
+    background-color: #fff;
+    top: 70px;
+    z-index: 999;
+    display: none;
+    padding: 0em 1em;
+    min-width: 15em;
+    :hover {
+      display: block;
+    }
+    a:hover {
+      color: blue;
+    }
+  }
+`;
+
+export const NavItem = styled(Link)`
+  color: ${color};
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  transition: all ease-in 0.3s;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: ${height};
+  border: 2px solid #fff;
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+  :hover {
+    + div {
+      display: block;
+    }
+    border-bottom: 2px solid #000;
+  }
+`;
+
 export const StyleCartBadge = styled.span`
   position: absolute;
   display: inline-flex;
@@ -104,7 +143,7 @@ export const StyleCartBadge = styled.span`
   justify-content: center;
   font-size: 1rem !important;
   background: #b39c9c;
-  color: #000;
+  color: #fff;
   border-radius: 50%;
   padding: 6px;
   font-weight: 500;
@@ -167,4 +206,12 @@ export const SubCategoryList = styled.ul`
   list-style: none;
   padding: 0;
   font-size: 15px;
+`;
+
+export const StyleCartTotal = styled.div`
+  display: flex;
+  flex-direction: column;
+  p {
+    margin: 0;
+  }
 `;

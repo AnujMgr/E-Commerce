@@ -11,15 +11,14 @@ export const SearchWrapper = styled.div`
     font-weight: 400;
     color: #000;
     border: 1px solid #f5f5f6;
-    background-color: #f5f5f6;
+    background-color: #eaeaeb;
     height: 40px;
-    border: 0 !important;
-    min-width: 30em;
+    min-width: 22em;
     border-radius: 0.2rem;
     :focus {
       background-color: #ffffff;
       outline: none;
-      border: 1px solid #000;
+      border: 1px solid #eaeaeb;
     }
 
     &::placeholder {

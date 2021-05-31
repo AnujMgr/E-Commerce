@@ -117,7 +117,7 @@ export const StyleBrandTitle = styled.p`
 export const StyleCartHeader = styled.p`
   font-size: 1.5em;
   text-align: center;
-  font-weight: 300;
+  font-weight: 600;
   margin: 2rem 0;
 `;
 
