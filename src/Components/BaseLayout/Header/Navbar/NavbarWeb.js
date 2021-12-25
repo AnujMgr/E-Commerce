@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { BsBag } from "react-icons/bs";
 import Search from "../Search/Search";
 import { useSelector } from "react-redux";
@@ -34,25 +34,27 @@ function NavbarWeb() {
           if (category.parentId === 0) {
             return (
               <NavWrapper key={category.id}>
-                <NavItem to={`/category/${category.slug}`}>
+                <NavLink
+                  className={"nav-link"}
+                  activeClassName="active-nav"
+                  to={`/category/${category.slug}`}
+                >
                   {category.name}
-                </NavItem>
+                </NavLink>
 
                 <div>
                   {categories.map((cat) => {
                     if (cat.parentId === category.id) {
                       return (
-                        <Link key={cat.id} to={`/category/${cat.slug}`}>
+                        <NavLink key={cat.id} to={`/category/${cat.slug}`}>
                           <p>{cat.name}</p>
-                        </Link>
+                        </NavLink>
                       );
                     }
                   })}
                 </div>
               </NavWrapper>
             );
-          } else {
-            <></>;
           }
         })}
       </StyleLeftNavLinks>
@@ -61,7 +63,7 @@ function NavbarWeb() {
         <Search handleSubmit={handleSubmit} />
 
         <ListItem>
-          <Link className="pos-relative" to="/cart">
+          <NavLink className="pos-relative" to="/cart">
             <BsBag color="black" size={26} />
             {cart.length !== 0 ? (
               <StyleCartBadge className="icon-favorite_outline large-font">
@@ -70,7 +72,7 @@ function NavbarWeb() {
             ) : (
               <></>
             )}
-          </Link>
+          </NavLink>
         </ListItem>
         {cartItem.length !== 0 ? (
           <ListItem>

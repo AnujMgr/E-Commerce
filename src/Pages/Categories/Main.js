@@ -29,10 +29,9 @@ function Main() {
       <ProductsContainer>
         {/* <ProductCard /> */}
         {!isLoading ? (
-          (console.log(catProducts),
           catProducts.catProducts.map((product) => {
             return <ProductCard product={product} key={product.id} />;
-          }))
+          })
         ) : (
           <Loading />
         )}

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { device } from "../../../styles/mediaQuery";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 const height = "4.5em";
 const color = "#000";
 
@@ -151,7 +152,7 @@ export const NavWrapper = styled.div`
   }
 `;
 
-export const NavItem = styled(Link)`
+export const NavItem = styled(NavLink)`
   color: ${color};
   font-size: 1rem;
   display: inline-flex;
@@ -160,7 +161,7 @@ export const NavItem = styled(Link)`
   padding-left: 1em;
   padding-right: 1em;
   height: ${height};
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid #fff0;
   cursor: pointer;
   font-weight: bold;
   position: relative;
