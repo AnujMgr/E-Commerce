@@ -2,13 +2,13 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart, removeFromCart } from "../../../redux/cart/cart-actions";
+import { StylePrimaryButton } from "../../../utils/CommonStyle";
 import CartCounter from "../CartCounter";
 import {
   StyleCard,
   StyleCardBody,
   StyleCardDetail,
   StyleCardFooter,
-  StyleAddToCartBtn,
 } from "./StyleCard";
 
 function ProductCard({ product }) {
@@ -50,16 +50,25 @@ function ProductCard({ product }) {
               qty={cartItem.filter((cart) => cart.cartItem.id === id)[0].qty}
               height={"2em"}
               width={"2em"}
-              margin={"0 1em 0 0"}
+              margin={"0 0.5em 0 0"}
+              padding="0"
             />
-            <StyleAddToCartBtn onClick={(e) => handleRemoveFromCart(id)}>
+            <StylePrimaryButton
+              width="100%"
+              padding="0.7em 0em"
+              onClick={(e) => handleRemoveFromCart(id)}
+            >
               Remove From Cart
-            </StyleAddToCartBtn>
+            </StylePrimaryButton>
           </>
         ) : (
-          <StyleAddToCartBtn onClick={(e) => handleAddToCart(product)}>
+          <StylePrimaryButton
+            width="100%"
+            padding="0.7em 2em"
+            onClick={(e) => handleAddToCart(product)}
+          >
             Add to Cart
-          </StyleAddToCartBtn>
+          </StylePrimaryButton>
         )}
       </StyleCardFooter>
     </StyleCard>

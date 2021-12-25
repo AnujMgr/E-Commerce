@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Categories from "./Pages/Categories";
 import Home from "./Pages/HomePage";
 import SingleProduct from "./Pages/SingleProduct";
 import Cart from "./Pages/Cart";
-// import CartProvider from "./Components/ContextApi/CartProvider";
-import { Navbar } from "./Components/BaseLayout";
+import { Footer, Navbar } from "./Components/BaseLayout";
 import "./index.css";
 import { useDispatch } from "react-redux";
 import Api from "./helper/api";
@@ -17,7 +16,7 @@ import {
 import RequestsEnum from "./redux/RequestHandler/request-list";
 import { setCategories } from "./redux/categories/categories-actions";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
-import { addToCart } from "./redux/cart/cart-actions";
+import SearchPage from "./Pages/SearchPage/SearchPage";
 
 const App = () => {
   const api = new Api();
@@ -52,8 +51,10 @@ const App = () => {
         <Route path="/cart" component={Cart} exact />
         <Route path="/category/:slug" component={Categories} exact />
         <Route path="/product/:slug" component={SingleProduct} exact />
+        <Route path="/search/:query" component={SearchPage} exact />
         <Route component={PageNotFound} exact />
       </Switch>
+      <Footer />
       {/* </CartProvider> */}
     </BrowserRouter>
   );

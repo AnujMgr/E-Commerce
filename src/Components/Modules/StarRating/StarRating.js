@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleStarRating, StyleStar } from "./StyleStar";
+import { StyleStarRating } from "./StyleStar";
 import { BsFillStarFill, BsStar } from "react-icons/bs";
 
 const StarRating = (props) => {

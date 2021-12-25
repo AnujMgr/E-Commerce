@@ -10,7 +10,7 @@ import {
 function CategoryProductsList({ categories }) {
   // console.log(fetchProducts);
   return (
-    <Wrapper>
+    <Wrapper margin={"2em auto"}>
       <GridContainer gap="0.5em">
         {categories.map((category) => {
           return (

@@ -16,6 +16,7 @@ export const StyleCard = styled.div`
     height: 100%;
   }
 `;
+
 export const StyleCardBody = styled.div`
   padding: 0.8em 1em;
   padding-top: 1.2em;
@@ -68,18 +69,4 @@ export const StyleCardFooter = styled.div`
   justify-content: space-between;
   padding: 0 1em;
   padding-bottom: 0.8em;
-`;
-
-export const StyleAddToCartBtn = styled.button`
-  border: 1px solid #000;
-  padding: 0.6rem 0.8rem;
-  cursor: pointer;
-  background-color: #fff;
-  transition: all ease-in-out 0.2s;
-  width: 100%;
-
-  :hover {
-    background-color: #000;
-    color: #fff;
-  }
 `;

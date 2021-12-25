@@ -1,26 +1,51 @@
 import styled from "styled-components";
+import { device } from "../../Components/styles/mediaQuery";
 
 const wrapWidth = "1300px";
 
 export const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: 18em 1fr;
-  grid-column-gap: 1.5em;
+  grid-template-columns: 20em 1fr;
+  grid-column-gap: 0.5em;
+  padding: 0 1rem;
   max-width: ${wrapWidth};
   margin: auto;
+  @media ${device.tablet} {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const ProductsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
   grid-column-gap: 0.8em;
   grid-row-gap: 1.5em;
+  margin-bottom: 1em;
+  @media ${device.mobileL} {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media ${device.mobileM} {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const FilterContainer = styled.div`
-  padding: 0 1em;
+  padding: 0;
   width: 100%;
   margin-right: auto;
+  @media ${device.tablet} {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    padding-top: 0.5em;
+    z-index: 999;
+  }
 `;
 
 export const StyleFilterList = styled.div`
@@ -33,6 +58,7 @@ export const StyleHeader = styled.div`
   text-align: center;
   padding: 2em 0;
   height: 18em;
+  margin-top: 4.2em;
   margin-bottom: 2em;
   background-color: #00000052;
   background-image: url(${(props) => props.image});
@@ -161,5 +187,30 @@ export const StyleFilterCapsule = styled.button`
     background-color: #fff;
     border-radius: 50px;
     color: #000;
+  }
+`;
+
+export const StyleMobileMenu = styled.div`
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+  display: none;
+  background-color: #fff;
+
+  @media ${device.tablet} {
+    display: flex;
+  }
+  button {
+    width: 50%;
+    border: 0;
+    padding: 1em 2em;
+    span {
+      margin-left: 1em;
+    }
+  }
+  button:first-child {
+    border-right: 1px solid #bda5a5;
   }
 `;

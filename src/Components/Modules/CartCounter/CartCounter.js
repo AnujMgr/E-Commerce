@@ -1,10 +1,11 @@
 import React from "react";
-import { StyleCartCounter, StyleCounterBtn } from "./StyleCartCounter";
+import { StyleCartCounter } from "./StyleCartCounter";
 import { BsPlus, BsDash } from "react-icons/bs";
 import { modifyQty } from "../../../redux/cart/cart-actions";
 import { useDispatch } from "react-redux";
+import { StylePrimaryButton } from "../../../utils/CommonStyle";
 
-function CartCounter({ id, qty, height, width, margin }) {
+function CartCounter({ id, qty, height, width, margin, padding }) {
   const dispatch = useDispatch();
   function handleCartIncrement(id, qty) {
     dispatch(modifyQty(id, qty));
@@ -17,25 +18,30 @@ function CartCounter({ id, qty, height, width, margin }) {
   // console.log(product);
 
   return (
-    <StyleCartCounter height={height} width={width} margin={margin}>
-      <StyleCounterBtn
+    <StyleCartCounter
+      height={height}
+      padding={padding}
+      width={width}
+      margin={margin}
+    >
+      <StylePrimaryButton
         border="0px"
         onClick={(e) => handleCartIncrement(id, qty + 1)}
       >
         <BsPlus size="1.5rem" />
-      </StyleCounterBtn>
+      </StylePrimaryButton>
       <span>{qty}</span>
       {qty > 1 ? (
-        <StyleCounterBtn
+        <StylePrimaryButton
           border="0px"
           onClick={(e) => handleCartDecrement(id, qty - 1)}
         >
           <BsDash size="1.5rem" />
-        </StyleCounterBtn>
+        </StylePrimaryButton>
       ) : (
-        <StyleCounterBtn border="0px" disabled>
+        <StylePrimaryButton border="0px" disabled>
           <BsDash size="1.5rem" />
-        </StyleCounterBtn>
+        </StylePrimaryButton>
       )}
     </StyleCartCounter>
   );

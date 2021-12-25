@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { SortOption } from "../../Components/Modules";
 import Loading from "../../Components/Modules/Loading";
 import ProductCard from "../../Components/Modules/ProductCard";
 import Select from "../../Components/Modules/SelectOption/Select";
@@ -12,12 +11,14 @@ import FilterList from "./FilterList";
 
 function Main() {
   // const dispatch = useDispatch();
+
   const { catProducts } = useSelector((state) => state.catProducts);
   const requestState = useSelector((state) => state.requests);
   const isLoading = namedRequestsInProgress(
     requestState,
     RequestsEnum.getCatProducts
   );
+
   return (
     <div>
       <StyleFlexSB>
@@ -28,9 +29,10 @@ function Main() {
       <ProductsContainer>
         {/* <ProductCard /> */}
         {!isLoading ? (
-          catProducts.map((product) => {
+          (console.log(catProducts),
+          catProducts.catProducts.map((product) => {
             return <ProductCard product={product} key={product.id} />;
-          })
+          }))
         ) : (
           <Loading />
         )}

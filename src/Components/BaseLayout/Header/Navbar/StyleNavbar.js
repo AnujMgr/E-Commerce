@@ -5,9 +5,13 @@ const height = "4.5em";
 const color = "#000";
 
 export const StyleWrapper = styled.div`
+  position: ${(props) => (props.position ? props.position : "")};
   background-color: ${(props) => props.bgColor};
   border-bottom: ${(props) => (props.border ? props.border : "none")};
   box-shadow: ${(props) => (props.boxShadow ? props.boxShadow : "none")};
+  z-index: 999;
+  width: 100%;
+  top: 0;
 `;
 
 export const NavBar = styled.div`
@@ -16,7 +20,7 @@ export const NavBar = styled.div`
   height: ${height};
   display: flex;
   justify-content: space-between;
-  padding: 0 1em;
+  padding: 0 0.6em;
   margin: auto;
 `;
 
@@ -40,9 +44,16 @@ export const StyleLeftNavLinks = styled.ul`
   }
 
   @media ${device.tablet} {
-    @media ${device.tablet} {
-      display: none;
-    }
+    display: none;
+  }
+`;
+
+export const StyleLeftNavSM = styled(StyleLeftNavLinks)`
+  @media ${device.tablet} {
+    display: flex;
+  }
+  @media ${device.tablet_min} {
+    display: none;
   }
 `;
 
@@ -53,6 +64,18 @@ export const StyleRightNavLinks = styled.ul`
   list-style: none;
   align-items: center;
   margin: 0;
+  @media ${device.tablet} {
+    display: none;
+  }
+`;
+
+export const StyleRightNavSM = styled(StyleRightNavLinks)`
+  @media ${device.tablet} {
+    display: flex;
+  }
+  @media ${device.tablet_min} {
+    display: none;
+  }
 `;
 
 export const ListItem = styled.li`
@@ -66,6 +89,19 @@ export const ListItem = styled.li`
   font-weight: 500;
   background-color: ${(props) => props.bgColor};
   color: ${color};
+  h4 {
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: bold;
+    max-width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  div p {
+    margin: 0;
+    font-size: 0.8rem;
+  }
 `;
 
 export const Overlay = styled.div`
@@ -101,7 +137,7 @@ export const NavWrapper = styled.div`
   div {
     position: absolute;
     background-color: #fff;
-    top: 70px;
+    top: 72px;
     z-index: 999;
     display: none;
     padding: 0em 1em;
@@ -124,7 +160,7 @@ export const NavItem = styled(Link)`
   padding-left: 1em;
   padding-right: 1em;
   height: ${height};
-  border: 2px solid #fff;
+  border-bottom: 2px solid #fff;
   cursor: pointer;
   font-weight: bold;
   position: relative;
@@ -214,4 +250,28 @@ export const StyleCartTotal = styled.div`
   p {
     margin: 0;
   }
+`;
+
+export const StyleSideBar = styled.div`
+  position: fixed;
+  max-width: 350px;
+  width: 100%;
+  background-color: #fff;
+  z-index: 99999;
+  top: 0;
+  bottom: 0;
+  left: ${(props) => (props.open ? 0 : "-350px")};
+  right: 0;
+  transition: all ease-in-out 0.3s;
+`;
+
+export const StyleOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99998;
+  background-color: #00000069;
+  display: ${(props) => (props.open ? "block" : "none")};
 `;

@@ -12,7 +12,7 @@ export const StyleCartCounter = styled.div`
     height: ${(props) => (props.height ? props.height : "3em")};
     width: ${(props) => (props.height ? props.width : "3em")};
     border: 1px solid #000;
-    padding: 0.4rem;
+    padding: ${(props) => (props.padding ? props.padding : "0.4em")};
     font-size: 1em;
     background-color: #fff;
   }
@@ -31,16 +31,5 @@ export const StyleCartCounter = styled.div`
   span {
     border: 0;
     font-size: 1rem;
-  }
-`;
-
-export const StyleCounterBtn = styled.button`
-  border-radius: ${(props) => props.border};
-  cursor: pointer;
-  transition: all ease 0.3s;
-  :hover {
-    background-color: #fff;
-    color: #000;
-    border: 1px solid #000;
   }
 `;

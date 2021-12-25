@@ -6,12 +6,6 @@ export default class Api {
   }
 
   init = () => {
-    // let headers = {
-    //   Authorization:
-    //     "Bearer " +
-    //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pbHNvbkBlbWFpbC5jb20iLCJwYXNzd29yZCI6Im5pbHNvbiIsImlhdCI6MTYyMDQ5MjkyMiwiZXhwIjoxNjIwNDk2NTIyfQ.BcOPslhGFsnLPLX-ySSina_ou2To5BlgKFZrA8KgDgs",
-    // };
-
     this.client = axios.create({
       baseURL: this.api_url,
       // headers: headers,
@@ -36,6 +30,10 @@ export default class Api {
 
   getCurrentProduct = (slug) => {
     return this.init().get(`/products?slug=${slug}`);
+  };
+
+  getSearchedProduct = (query) => {
+    return this.init().get(`/products?q=${query}`);
   };
 
   addNewUser = (data) => {

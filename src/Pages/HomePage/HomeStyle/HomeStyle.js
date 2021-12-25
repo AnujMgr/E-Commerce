@@ -1,10 +1,8 @@
 import styled from "styled-components";
-const wrapWidth = "1200px";
+import { device } from "../../../Components/styles/mediaQuery";
+import { StyleFlexSB } from "../../../utils/CommonStyle";
 
-export const StyleFlexSB = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
+const wrapWidth = "1300px";
 
 export const StyleFlex = styled.div`
   display: flex;
@@ -32,6 +30,7 @@ export const StyleCategoryHeader = styled(StyleFlexSB)`
 export const StyleFeaturedEntries = styled(StyleFlexSB)`
   width: 100%;
   max-width: ${wrapWidth};
+  padding: 0 1em;
   height: 100px;
   margin: 1em auto;
   gap: 0.4em;
@@ -46,12 +45,16 @@ export const StyleFeaturedEntries = styled(StyleFlexSB)`
       margin-right: 1em;
     }
   }
+  @media ${device.mobileL} {
+    flex-direction: column;
+  }
 `;
 
 export const Wrapper = styled.div`
   width: 100%;
   max-width: ${wrapWidth};
-  margin: auto;
+  padding: 0 1em;
+  margin: ${(props) => (props.margin ? props.margin : "auto")};
 `;
 
 export const GridContainer = styled.div`
@@ -65,7 +68,7 @@ export const GridContainer = styled.div`
   grid-row-gap: 0.5em;
   grid-column-gap: 0.5em;
   max-width: ${wrapWidth};
-  margin: auto;
+  margin-top: 1em;
   width: 100%;
   > div:first-child {
     grid-area: leftCard;
@@ -83,12 +86,21 @@ export const GridContainer = styled.div`
     grid-area: rightCard;
     height: 100%;
   }
-`;
-
-export const FluidImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  @media ${device.tablet} {
+    grid-template-areas:
+      "leftCard leftCard leftCard leftCard"
+      "centerCard1 centerCard1 centerCard2 centerCard2"
+      "rightCard rightCard rightCard rightCard ";
+    grid-template-rows: 200px 200px 200px;
+  }
+  @media ${device.mobileL} {
+    grid-template-areas:
+      "leftCard leftCard"
+      "centerCard1 centerCard1"
+      "centerCard2 centerCard2"
+      "rightCard rightCard";
+    grid-template-rows: 200px 200px 200px 200px;
+  }
 `;
 
 export const FeatureCard = styled.div`
@@ -101,6 +113,12 @@ export const FeatureCard = styled.div`
     font-size: 1.4rem;
     text-transform: uppercase;
   }
+`;
+
+export const FluidImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 export const StyleOverlay = styled.div`

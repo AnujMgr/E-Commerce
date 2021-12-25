@@ -1,11 +1,43 @@
 import React from "react";
+import { StyleWrap } from "../../../utils/CommonStyle";
+import {
+  StyleFooterContainer,
+  StyleWrapper,
+  StyleFooterList,
+} from "./StyleFooter";
 
 const Footer = () => {
-  console.log("i am footer");
   return (
-    <React.Fragment>
-      <h3>Footer</h3>
-    </React.Fragment>
+    <div style={{ background: "#353745", padding: "2rem" }}>
+      <StyleWrap bgColor="#353745" height="100%" width="100%">
+        <StyleFooterContainer>
+          <StyleFooterList>
+            <h3>COMPANY</h3>
+            <p>Terms and Condition</p>
+            <p>Privacy Policy</p>
+            <p>FAQ</p>
+          </StyleFooterList>
+          <StyleFooterList>
+            <h3>ABOUT US</h3>
+            <p>Terms and Condition</p>
+            <p>Privacy Policy</p>
+            <p>FAQ</p>
+          </StyleFooterList>
+          <StyleFooterList>
+            <h3>COMPANY</h3>
+            <p>Terms and Condition</p>
+            <p>Privacy Policy</p>
+            <p>FAQ</p>
+          </StyleFooterList>
+          <StyleFooterList>
+            <h3>COMPANY</h3>
+            <p>Terms and Condition</p>
+            <p>Privacy Policy</p>
+            <p>FAQ</p>
+          </StyleFooterList>
+        </StyleFooterContainer>
+      </StyleWrap>
+    </div>
   );
 };
 

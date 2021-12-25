@@ -5,20 +5,20 @@ const Banner = () => {
   const fadeImages = [
     "/images/shoe.jpeg",
     "/images/shoe2.jpeg",
-    "/images/shoe3.jpeg"
+    "/images/shoe3.jpeg",
   ];
 
   const fadeProperties = {
     duration: 5000,
     transitionDuration: 500,
     infinite: true,
-    indicators: false
+    indicators: false,
     // onChange: (oldIndex, newIndex) => {
     //   console.log(`fade transition from ${oldIndex} to ${newIndex}`);
     // }
   };
   return (
-    <div className="slide-container">
+    <div className="slide-container" style={{ marginTop: "4.3em" }}>
       <Fade {...fadeProperties}>
         <div className="each-fade">
           <div className="image-container">

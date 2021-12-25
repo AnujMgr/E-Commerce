@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { device } from "../../Components/styles/mediaQuery";
 import { StylePrimaryButton } from "../../utils/CommonStyle";
 
 export const StyleWrapper = styled.div`
@@ -42,9 +41,6 @@ export const StyleGridContainer = styled.div`
   grid-template-rows: auto;
   grid-column-gap: 1rem;
   width: 100%;
-
-  @media ${device.tablet} {
-  }
 `;
 
 export const StyleHeader = styled(StyleFlexSB)`
@@ -149,8 +145,13 @@ export const StyleCartImg = styled.img`
 `;
 
 export const StyleEmptyCartContainer = styled.div`
-  margin: 2em auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6em;
   text-align: center;
+  min-height: calc(100vh - 200px);
   img {
     width: 100%;
     max-width: 500px;

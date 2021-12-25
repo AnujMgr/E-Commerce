@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Api from "../../helper/api";
 import CartCounter from "../../Components/Modules/CartCounter";
-import { StyleAddToCartBtn } from "./StyleSingleProduct";
 import {
   StyleDescriptionContainer,
   StyleProductTitle,
@@ -17,6 +16,7 @@ import Loading from "../../Components/Modules/Loading";
 import { addToCart, removeFromCart } from "../../redux/cart/cart-actions";
 import { useDispatch, useSelector } from "react-redux";
 import { StarRating } from "../../Components/Modules";
+import { StylePrimaryButton } from "../../utils/CommonStyle";
 
 const SingleProduct = () => {
   const api = new Api();
@@ -69,6 +69,7 @@ const SingleProduct = () => {
               <>
                 <CartCounter
                   id={product.id}
+                  padding="0"
                   qty={
                     cartItem.filter(
                       (cart) => cart.cartItem.id === product.id
@@ -76,16 +77,22 @@ const SingleProduct = () => {
                   }
                   margin={"0 1em 0 0"}
                 />
-                <StyleAddToCartBtn
+                <StylePrimaryButton
+                  padding="0rem 3.5rem"
+                  margin="0"
                   onClick={(e) => handleRemoveFromCart(product.id)}
                 >
                   Remove From Cart
-                </StyleAddToCartBtn>
+                </StylePrimaryButton>
               </>
             ) : (
-              <StyleAddToCartBtn onClick={(e) => handleAddToCart(product)}>
+              <StylePrimaryButton
+                padding="1.2em 5em"
+                margin="0"
+                onClick={(e) => handleAddToCart(product)}
+              >
                 Add to Cart
-              </StyleAddToCartBtn>
+              </StylePrimaryButton>
             )}
           </StyleFlex>
         </StyleDescriptionContainer>

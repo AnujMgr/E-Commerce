@@ -5,7 +5,7 @@ export const SearchWrapper = styled.div`
   align-items: center;
   position: relative;
   input {
-    padding: 0 0 0 40px;
+    padding: 0 20px 0 40px;
     margin: 10px 0;
     font-size: 14px;
     font-weight: 400;
@@ -26,7 +26,7 @@ export const SearchWrapper = styled.div`
     }
   }
 
-  i {
+  svg {
     position: absolute;
     left: 10px;
     color: #7d7a7a;

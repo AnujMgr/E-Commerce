@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Api from "../../../helper/api";
+import { StylePrimaryButton } from "../../../utils/CommonStyle";
 import Loading from "../Loading";
 import {
   StyleNavItem,
@@ -21,7 +23,6 @@ function NavTabs({ data }) {
         .getProductByCategory(slug, page, limit)
         .then((response) => {
           setProducts(response.data);
-          console.log(slug);
           setLoading(false);
         })
         .catch(function (error) {
@@ -36,23 +37,34 @@ function NavTabs({ data }) {
       <h1>Featured Products Section</h1>
       <StyleNavsContainer>
         {data.map((item) => (
-          <StyleNavItem key={item.id} onClick={(e) => setSlug(item.slug)}>
+          <StyleNavItem
+            active={item.slug === slug ? true : false}
+            key={item.id}
+            onClick={(e) => setSlug(item.slug)}
+          >
             {item.name}
           </StyleNavItem>
         ))}
       </StyleNavsContainer>
       {!loading ? (
-        <StyleTabsContainer>
-          {products.map((product) => {
-            return (
-              <div>
-                <img src={product.image} />
-                <h3>{product.name}</h3>
-                <p>$ {product.price}</p>
-              </div>
-            );
-          })}
-        </StyleTabsContainer>
+        <>
+          <StyleTabsContainer>
+            {products.map((product) => {
+              return (
+                <Link key={product.id} to={`/product/${product.slug}`}>
+                  <div>
+                    <img src={product.image} alt="image of product" />
+                    <h3>{product.name}</h3>
+                    <p>$ {product.price}</p>
+                  </div>
+                </Link>
+              );
+            })}
+          </StyleTabsContainer>
+          <Link to={`/category/${slug}`}>
+            <StylePrimaryButton padding="1em 3em">View All</StylePrimaryButton>
+          </Link>
+        </>
       ) : (
         <Loading />
       )}

@@ -7,7 +7,6 @@ import {
   StyleCartHeader,
   StyleHeader,
   StyleGridContainer,
-  StyleWrapper,
   StyleEmptyCartContainer,
   StyleOrderSummaryItem,
   StyleFlexSB,
@@ -15,20 +14,15 @@ import {
 import CartItem from "./Components/CartItem";
 import { useSelector } from "react-redux";
 import { FormatNumber } from "../../Components/Modules";
+import { StyleWrap } from "../../utils/CommonStyle";
 
 const Cart = () => {
   const cartItem = useSelector((state) => state.cart.cart);
 
-  function getTotal(cartItem) {
-    let val = [];
-    cartItem.map((product) => val.push(product.cartItem.price * product.qty));
-    const total = val.reduce((a, b) => a + b, 0);
-    return total;
-  }
   return (
     <React.Fragment>
       {cartItem.length !== 0 ? (
-        <StyleWrapper>
+        <StyleWrap padding="0 1em" margin="7em auto 2em auto">
           <StyleCartHeader> My Shopping Bag </StyleCartHeader>
           <StyleGridContainer>
             <StyleCartWrapper>
@@ -77,7 +71,7 @@ const Cart = () => {
               </StyleOrderSummary>
             </div>
           </StyleGridContainer>
-        </StyleWrapper>
+        </StyleWrap>
       ) : (
         <StyleEmptyCartContainer>
           <img src="/images/empty_cart.png" alt="Cart is Empty" />
@@ -89,3 +83,10 @@ const Cart = () => {
 };
 
 export default Cart;
+
+function getTotal(cartItem) {
+  let val = [];
+  cartItem.map((product) => val.push(product.cartItem.price * product.qty));
+  const total = val.reduce((a, b) => a + b, 0);
+  return total;
+}

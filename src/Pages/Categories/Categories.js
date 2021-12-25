@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GridContainer } from "./CategoryStyle";
+import { GridContainer, StyleMobileMenu } from "./CategoryStyle";
 import { useParams } from "react-router";
 import Api from "../../helper/api";
 import { useDispatch } from "react-redux";
@@ -16,6 +16,7 @@ import Header from "./Header";
 import { setFilter } from "../../redux//filter/filter-action";
 import { setCatProducts } from "../../redux//products/products-actions";
 import { setSelectedCategory } from "../../redux/categories/categories-actions";
+import { BiSort, BiSlider } from "react-icons/bi";
 
 const Categories = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const Categories = () => {
   const api = new Api();
   // const page = 1;
   // const limit = 8;
-  const RequestCategories = RequestsEnum.getCategories;
+  const RequestCategories = RequestsEnum.getCurrentCategory;
   const RequestProducts = RequestsEnum.getCatProducts;
 
   // const [offset, setOffset] = useState(0);
@@ -37,6 +38,7 @@ const Categories = () => {
     setPage(selectedPage + 1);
   };
 
+  dispatch(requestStarted(RequestProducts));
   useEffect(() => {
     items.map((name) => dispatch(setFilter({ name, isChecked: false })));
 
@@ -54,16 +56,14 @@ const Categories = () => {
         });
     };
 
-    fetchCurrentCategory(slug, page, limit);
-  }, [slug]);
-
-  useEffect(() => {
     const fetchProducts = async (slug, page, limit) => {
       dispatch(requestStarted(RequestProducts));
       api
         .getProductByCategory(slug, page, limit)
         .then((response) => {
-          dispatch(setCatProducts(response.data));
+          const count = response.headers["x-total-count"];
+          const catProducts = response.data;
+          dispatch(setCatProducts({ catProducts, count }));
           dispatch(requestFinished(RequestProducts));
         })
         .catch(function (error) {
@@ -71,6 +71,9 @@ const Categories = () => {
           console.log(error);
         });
     };
+
+    fetchCurrentCategory(slug, page, limit);
+
     fetchProducts(slug, page, limit);
   }, [slug]);
 
@@ -81,6 +84,16 @@ const Categories = () => {
         <Aside />
         <Main handlePageClick={handlePageClick} currentPage={page} />
       </GridContainer>
+      <StyleMobileMenu>
+        <button>
+          <BiSort />
+          <span>Sort</span>
+        </button>
+        <button>
+          <BiSlider />
+          <span>Filter</span>
+        </button>
+      </StyleMobileMenu>
     </React.Fragment>
   );
 };
