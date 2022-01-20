@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { device } from "../../Components/styles/mediaQuery";
 
 export const StyleWrapper = styled.div`
-  width: 1300px;
+  max-width: 1300px;
   margin: auto;
 `;
 
@@ -11,9 +12,13 @@ export const StyleGridContainer = styled.div`
   grid-column-gap: 1.5em;
   margin-top: 5em;
   padding: 1em;
+  @media ${device.tablet} {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const StyleImageContainer = styled.div`
+  width: 100%;
   img {
     width: 100%;
     border-radius: 0.5rem;

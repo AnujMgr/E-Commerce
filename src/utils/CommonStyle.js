@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const StyleWrap = styled.div`
   max-width: 1300px;
-  width: 100%;
-  height: ${(props) => (props.height ? props.height : "calc(100vh - 200px)")};
+  width: auto;
+  min-height: ${(props) =>
+    props.height ? props.height : "calc(100vh - 200px)"};
   padding: ${(props) => (props.padding ? props.padding : "0 0.6em")};
   margin: ${(props) => (props.margin ? props.margin : "auto")};
   background-color: ${(props) => (props.bgColor ? props.bgColor : "#fff")};

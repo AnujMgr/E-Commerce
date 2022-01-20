@@ -28,7 +28,7 @@ export const StyleCategoryHeader = styled(StyleFlexSB)`
 `;
 
 export const StyleFeaturedEntries = styled(StyleFlexSB)`
-  width: 100%;
+  width: auto;
   max-width: ${wrapWidth};
   padding: 0 1em;
   height: 100px;
@@ -51,7 +51,7 @@ export const StyleFeaturedEntries = styled(StyleFlexSB)`
 `;
 
 export const Wrapper = styled.div`
-  width: 100%;
+  width: auto;
   max-width: ${wrapWidth};
   padding: 0 1em;
   margin: ${(props) => (props.margin ? props.margin : "auto")};

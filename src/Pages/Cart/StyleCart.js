@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../Components/styles/mediaQuery";
 import { StylePrimaryButton } from "../../utils/CommonStyle";
 
 export const StyleWrapper = styled.div`
@@ -40,7 +41,10 @@ export const StyleGridContainer = styled.div`
   grid-template-columns: 1fr 24em;
   grid-template-rows: auto;
   grid-column-gap: 1rem;
-  width: 100%;
+  width: auto;
+  @media ${device.tablet} {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const StyleHeader = styled(StyleFlexSB)`
